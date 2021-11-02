@@ -1,0 +1,11 @@
+[gd_scene format=2]
+
+[node name="Label" type="Label"]
+margin_left = 168.0
+margin_top = 124.0
+margin_right = 281.0
+margin_bottom = 161.0
+text = "Bug sneak game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
