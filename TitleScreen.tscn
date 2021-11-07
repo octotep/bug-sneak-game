@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/fonts/roboto/Roboto-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://TitleScreen.gd" type="Script" id=2]
+[ext_resource path="res://Button3.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -89,5 +90,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 6 )
 text = "Quit Game"
+script = ExtResource( 3 )
 
 [connection signal="pressed" from="VBoxContainer/VBoxContainer2/Button3" to="." method="_on_Button3_pressed"]
