@@ -8,6 +8,3 @@ func _on_Button3_pressed():
 
 func _on_Button_pressed():
 	get_tree().change_scene("res://Level.tscn")
-
-func _process(delta):
-	print(get_viewport().size)
