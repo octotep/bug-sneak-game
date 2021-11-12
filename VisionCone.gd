@@ -11,7 +11,7 @@ func _process(delta):
 	
 	var pos = global_position
 	direction = (pos - get_global_mouse_position()).normalized()
-	angle = rad2deg(direction.angle()) - 90
+	angle = rad2deg(direction.angle()) + 180
 	
 	var detecting = false
 	for node in get_tree().get_nodes_in_group('player'):
