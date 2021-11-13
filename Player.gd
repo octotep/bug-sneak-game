@@ -1,7 +1,8 @@
 extends KinematicBody2D
 
 
-export var speed = Vector2(150.0, 350.0)
+export var run_speed = Vector2(150.0, 350.0)
+export var crawl_speed = Vector2(75.0, 350.0)
 onready var gravity = ProjectSettings.get("physics/2d/default_gravity")
 
 const FLOOR_NORMAL = Vector2.UP
@@ -17,6 +18,8 @@ enum STATE {
 	MID_JUMP,
 	FALLING,
 	LANDING,
+	CROUCHING,
+	CRAWLING,
 }
 var _state = STATE.IDLE
 
@@ -28,6 +31,12 @@ func get_direction():
 	return Vector2(x, y)
 
 func _physics_process(delta):
+	var is_crouching = Input.is_action_pressed("down")
+
+	var speed = run_speed
+	if is_crouching:
+		speed = crawl_speed
+	
 	var direction = get_direction()
 	_velocity.x = direction.x * speed.x
 	if direction.y != 0.0:
@@ -46,10 +55,13 @@ func _physics_process(delta):
 	elif _velocity.x < 0:
 		$AnimatedSprite.set_flip_h(true)
 	
-	if _velocity.x != 0 and _state == STATE.IDLE and is_on_floor():
+	if _velocity.x != 0 and is_on_floor() and not is_crouching:
 		$AnimatedSprite.play("run")
 		_state = STATE.RUNNING
 	elif _velocity.x == 0 and _state == STATE.RUNNING and is_on_floor():
+		$AnimatedSprite.play("stop")
+		_state = STATE.STOPPING
+	elif _velocity.x == 0 and _state == STATE.STOPPING and is_on_floor() and $AnimatedSprite.frame == 1:
 		$AnimatedSprite.play("idle")
 		_state = STATE.IDLE
 	elif Input.is_action_just_pressed("jump"):
@@ -59,7 +71,7 @@ func _physics_process(delta):
 		$AnimatedSprite.play("jump_mid")
 		_state = STATE.MID_JUMP
 	elif _velocity.y >= 0 and not is_on_floor():
-		$AnimatedSprite.play("jump_fall")
+		$AnimatedSprite.play("fall")
 		_state = STATE.FALLING
 	elif _state == STATE.FALLING and is_on_floor():
 		$AnimatedSprite.play("land")
@@ -71,3 +83,12 @@ func _physics_process(delta):
 		elif _velocity.x == 0:
 			$AnimatedSprite.play("idle")
 			_state = STATE.IDLE
+	elif _velocity.x == 0 and is_on_floor() and is_crouching:
+		$AnimatedSprite.play("crouch")
+		_state = STATE.CROUCHING
+	elif _velocity.x == 0 and is_on_floor() and Input.is_action_just_released("down"):
+		$AnimatedSprite.play("idle")
+		_state = STATE.IDLE
+	elif _velocity.x != 0 and is_on_floor() and is_crouching:
+		$AnimatedSprite.play("crawl")
+		_state = STATE.CRAWLING
