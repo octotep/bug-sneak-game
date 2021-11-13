@@ -5,8 +5,7 @@ export var run_speed = Vector2(150.0, 350.0)
 export var crawl_speed = Vector2(75.0, 350.0)
 onready var gravity = ProjectSettings.get("physics/2d/default_gravity")
 
-const FLOOR_NORMAL = Vector2.UP
-const FLOOR_DETECT_DISTANCE = 20.0
+const FLOOR_DETECT_DISTANCE = 20
 
 var _velocity = Vector2.ZERO
 
@@ -41,11 +40,12 @@ func _physics_process(delta):
 	_velocity.x = direction.x * speed.x
 	if direction.y != 0.0:
 		_velocity.y = direction.y * speed.y
-	
-	var snap_vector = Vector2.ZERO
-	if direction.y == 0.0:
-		snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE
-	_velocity = move_and_slide_with_snap(_velocity, snap_vector, FLOOR_NORMAL, false, 4, 0.9, false)
+		
+	var snap_vector = Vector2.DOWN * FLOOR_DETECT_DISTANCE
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			snap_vector = Vector2.ZERO
+	_velocity = move_and_slide_with_snap(_velocity, snap_vector, Vector2.UP, true, 4, 0.9, false)
 	
 	_velocity.y += gravity * delta
 	
@@ -55,16 +55,16 @@ func _physics_process(delta):
 	elif _velocity.x < 0:
 		$AnimatedSprite.set_flip_h(true)
 	
-	if _velocity.x != 0 and is_on_floor() and not is_crouching:
+	if direction.x != 0 and is_on_floor() and not is_crouching:
 		$AnimatedSprite.play("run")
 		_state = STATE.RUNNING
-	elif _velocity.x == 0 and _state == STATE.RUNNING and is_on_floor():
+	elif direction.x == 0 and _state == STATE.RUNNING and is_on_floor():
 		$AnimatedSprite.play("stop")
 		_state = STATE.STOPPING
-	elif _velocity.x == 0 and _state == STATE.STOPPING and is_on_floor() and $AnimatedSprite.frame == 1:
+	elif direction.x == 0 and _state == STATE.STOPPING and is_on_floor() and $AnimatedSprite.frame == 1:
 		$AnimatedSprite.play("idle")
 		_state = STATE.IDLE
-	elif Input.is_action_just_pressed("jump"):
+	elif Input.is_action_just_pressed("jump") and _velocity.y < 0:
 		$AnimatedSprite.play("jump")
 		_state = STATE.START_JUMP
 	elif _velocity.y >= -100 and not is_on_floor() and _state == STATE.START_JUMP:
