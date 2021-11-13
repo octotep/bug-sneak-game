@@ -1,9 +1,13 @@
 extends MarginContainer
 
+onready var _quit_button = $VBoxContainer/Buttons/Quit
+
 func _init():
 	OS.min_window_size = OS.window_size
+	
+func _ready():
 	if (OS.get_name() == 'HTML5'):
-		self.visible = false
+		_quit_button.visible = false
 
 func _on_NewGame_pressed():
 	var _ret = get_tree().change_scene("res://Level.tscn")
