@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/mall/export/sprites/camera.png" type="Texture" id=1]
-[ext_resource path="res://CameraVisionCone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ScanningVisionCone.gd" type="Script" id=2]
 [ext_resource path="res://Camera.gd" type="Script" id=3]
+[ext_resource path="res://VisionCone.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -31,4 +32,5 @@ animation = "blink"
 frame = 1
 playing = true
 
-[node name="CameraVisionCone" parent="." instance=ExtResource( 2 )]
+[node name="VisionCone" parent="." instance=ExtResource( 4 )]
+movement_script = ExtResource( 2 )
