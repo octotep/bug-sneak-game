@@ -31,7 +31,7 @@ func get_direction():
 	return Vector2(x, y)
 
 func _physics_process(delta):
-	var is_crouching = Input.is_action_pressed("down")
+	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
 
 	var speed = run_speed
 	if is_crouching:
@@ -55,6 +55,11 @@ func _physics_process(delta):
 	elif _velocity.x < 0:
 		$AnimatedSprite.set_flip_h(true)
 	
+	print(_state == STATE.START_JUMP)
+	print(_velocity.y)
+	print(is_on_floor())
+	print()
+	
 	if _velocity.x != 0 and is_on_floor() and not is_crouching:
 		$AnimatedSprite.play("run")
 		_state = STATE.RUNNING
@@ -73,7 +78,7 @@ func _physics_process(delta):
 	elif _velocity.y >= 0 and not is_on_floor():
 		$AnimatedSprite.play("fall")
 		_state = STATE.FALLING
-	elif _state == STATE.FALLING and is_on_floor():
+	elif (_state == STATE.FALLING or _state == STATE.MID_JUMP or _state == STATE.START_JUMP) and is_on_floor():
 		$AnimatedSprite.play("land")
 		_state = STATE.LANDING
 	elif _state == STATE.LANDING and $AnimatedSprite.frame == 1:
