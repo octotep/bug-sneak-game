@@ -1,9 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight23.png" type="Texture" id=3]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight24.png" type="Texture" id=4]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark23.png" type="Texture" id=5]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight22.png" type="Texture" id=6]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight25.png" type="Texture" id=7]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark25.png" type="Texture" id=8]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark22.png" type="Texture" id=9]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark24.png" type="Texture" id=10]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.9812, 20.6439 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=[
@@ -21,8 +29,43 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0340118, 20.9763 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Right" type="TouchScreenButton" parent="UI"]
+position = Vector2( 141.783, 496.249 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 3 )
+passby_press = true
+action = "right"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="UI"]
+position = Vector2( 27.352, 496.249 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 6 )
+passby_press = true
+action = "left"
+visibility_mode = 1
+
+[node name="Jump" type="TouchScreenButton" parent="UI"]
+position = Vector2( 910.936, 381.818 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 4 )
+passby_press = true
+action = "jump"
+visibility_mode = 1
+
+[node name="Crouch" type="TouchScreenButton" parent="UI"]
+position = Vector2( 910.936, 496.249 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 7 )
+passby_press = true
+action = "down"
+visibility_mode = 1

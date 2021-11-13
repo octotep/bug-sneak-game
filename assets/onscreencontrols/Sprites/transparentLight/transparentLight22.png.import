@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/stairs.png-1671513b997a665e1f4f42e3b3f9aa36.stex"
+path="res://.import/transparentLight22.png-79f3789bef9fd9236502f5cf815ea7e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/mall/export/tiles/stairs.png"
-dest_files=[ "res://.import/stairs.png-1671513b997a665e1f4f42e3b3f9aa36.stex" ]
+source_file="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight22.png"
+dest_files=[ "res://.import/transparentLight22.png-79f3789bef9fd9236502f5cf815ea7e1.stex" ]
 
 [params]
 
