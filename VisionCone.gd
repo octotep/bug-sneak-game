@@ -7,7 +7,7 @@ var angle = 0
 var direction = Vector2()
 
 
-func _process(delta):
+func _process(_delta):
 	
 	var pos = global_position
 	direction = (pos - get_global_mouse_position()).normalized()

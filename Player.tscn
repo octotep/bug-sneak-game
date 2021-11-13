@@ -1,27 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/Ball and Chain Bot/idle.png" type="Texture" id=1]
+[ext_resource path="res://Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
-length = 0.46
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 4, 4 ]
-}
-
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 11.7936, 12.5122 )
+extents = Vector2( 7.9812, 20.6439 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=[
 "player",
@@ -29,16 +12,15 @@ extents = Vector2( 11.7936, 12.5122 )
 collision_mask = 6
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-vframes = 5
-frame = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/idle = SubResource( 1 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1 )
+frames = ExtResource( 1 )
+animation = "idle"
+frame = 3
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 3.77977, 0 )
+position = Vector2( 0.0340118, 20.9763 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
