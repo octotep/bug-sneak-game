@@ -59,6 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:3.4
+    if: github.ref == 'refs/heads/mistress'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
