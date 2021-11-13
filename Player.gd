@@ -55,11 +55,6 @@ func _physics_process(delta):
 	elif _velocity.x < 0:
 		$AnimatedSprite.set_flip_h(true)
 	
-	print(_state == STATE.START_JUMP)
-	print(_velocity.y)
-	print(is_on_floor())
-	print()
-	
 	if _velocity.x != 0 and is_on_floor() and not is_crouching:
 		$AnimatedSprite.play("run")
 		_state = STATE.RUNNING
