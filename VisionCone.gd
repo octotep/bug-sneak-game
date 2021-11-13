@@ -14,7 +14,7 @@ func update_angle():
 	angle = rad2deg(new_direction.angle()) - 90
 
 
-func _process(delta):
+func _process(_delta):
 	
 	pos = global_position
 	update_angle()
