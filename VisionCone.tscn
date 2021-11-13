@@ -7,7 +7,7 @@
 script = ExtResource( 1 )
 movement_script = ExtResource( 2 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="VisionConePolygon" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( 0, 0, 150, 150, 0, 150 )
 
 [node name="VisionConeMovement" type="Node2D" parent="."]

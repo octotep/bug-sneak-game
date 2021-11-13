@@ -77,4 +77,4 @@ func _draw():
 	)
 	
 	var colors = PoolColorArray([Color(0, 0, 1.0, 0.5)])
-	draw_polygon($CollisionPolygon2D.polygon, colors)
+	draw_polygon($VisionConePolygon.polygon, colors)
