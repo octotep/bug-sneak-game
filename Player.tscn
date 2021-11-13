@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark25.png" type="Texture" id=8]
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark22.png" type="Texture" id=9]
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark24.png" type="Texture" id=10]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark12.png" type="Texture" id=11]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight12.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7.9812, 20.6439 )
@@ -24,7 +26,6 @@ script = ExtResource( 2 )
 position = Vector2( 0, -1 )
 frames = ExtResource( 1 )
 animation = "stop"
-frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -68,4 +69,12 @@ normal = ExtResource( 8 )
 pressed = ExtResource( 7 )
 passby_press = true
 action = "down"
+visibility_mode = 1
+
+[node name="Pause" type="TouchScreenButton" parent="UI"]
+position = Vector2( 927.868, 20.9763 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+passby_press = true
+action = "toggle_pause"
 visibility_mode = 1
