@@ -63,15 +63,11 @@ toggle_pause={
  ]
 }
 
-[input_devices]
-
-pointing/emulate_touch_from_mouse=true
-
 [layer_names]
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="floor"
-2d_physics/layer_3="acid"
+2d_physics/layer_3="door"
 
 [physics]
 
