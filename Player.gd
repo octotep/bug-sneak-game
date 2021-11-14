@@ -92,3 +92,13 @@ func _physics_process(delta):
 	elif _velocity.x != 0 and is_on_floor() and is_crouching:
 		$AnimatedSprite.play("crawl")
 		_state = STATE.CRAWLING
+
+
+var max_alerts = 3
+var current_alerts = 0
+
+
+func _on_alerted():
+	current_alerts += 1
+	if current_alerts >= max_alerts:
+		get_tree().change_scene("res://TitleScreen.tscn")

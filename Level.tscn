@@ -35,3 +35,5 @@ position = Vector2( 492.513, 458.139 )
 layer = 100
 
 [node name="PauseScreen" parent="InterfaceLayer" instance=ExtResource( 2 )]
+
+[editable path="InterfaceLayer/PauseScreen"]
