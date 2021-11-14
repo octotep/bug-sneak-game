@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://VisionCone.gd" type="Script" id=1]
+[ext_resource path="res://DefaultVisionConeMovement.gd" type="Script" id=2]
 
-[node name="VisionCone" type="Node2D"]
+[node name="VisionCone" type="Area2D"]
 script = ExtResource( 1 )
+movement_script = ExtResource( 2 )
+
+[node name="VisionConePolygon" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 0, 0, 150, 150, 0, 150 )
+
+[node name="VisionConeMovement" type="Node2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_VisionCone_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_VisionCone_body_exited"]
