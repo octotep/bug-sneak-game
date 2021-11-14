@@ -3,6 +3,7 @@ extends Area2D
 # General exports for all vision cones
 export var detect_radius = 150
 export var field_of_view = 40
+export var flash_frequency = 0.3
 
 # Scanning specific exports
 export var min_angle = 0
@@ -13,9 +14,17 @@ export(GDScript) var movement_script
 
 var angle = 0
 var detecting = false
+var flash_counter = 0
+
+signal alerted
 
 
-func _process(_delta):
+func _ready():
+	for player in get_tree().get_nodes_in_group("player"):
+		connect("alerted", player, "_on_alerted")
+
+
+func _process(delta):
 	
 	$VisionConeMovement.set_script(movement_script)
 	angle = $VisionConeMovement.update_angle()
@@ -26,13 +35,32 @@ func _process(_delta):
 #		angle + 45 - field_of_view / 2,
 #		angle + 45 + field_of_view / 2
 #	)
-#	$CollisionPolygon2D.polygon = polygon
+#	$VisionConePolygon.polygon = polygon
+	
+	if not $AlertCooldownTimer.is_stopped():
+		flash_counter += delta
+		if flash_counter >= flash_frequency:
+			flash_counter = 0
+			if draw_color == RED:
+				draw_color = YELLOW
+			else:
+				draw_color = RED
+	else:
+		draw_color = GREEN
 	
 	update()
 
 
+func handle_alert():
+	draw_color = RED
+	$AlertCooldownTimer.start()
+	emit_signal("alerted")
+
+
 const RED = Color(1.0, 0, 0, 0.4)
 const GREEN = Color(0, 1.0, 0, 0.4)
+const YELLOW = Color(1.0, 1.0, 0, 0.6)
+const CLEAR = Color(0, 0, 0, 0)
 
 var draw_color = GREEN
 
@@ -40,13 +68,13 @@ var draw_color = GREEN
 func _on_VisionCone_body_entered(body):
 	if body.is_in_group("player"):
 		detecting = true
-		draw_color = RED
+		if $AlertCooldownTimer.is_stopped():
+			handle_alert()
 
 
 func _on_VisionCone_body_exited(body):
 	if body.is_in_group("player"):
 		detecting = false
-		draw_color = GREEN
 
 
 func get_shape_points(center, radius, angle_from, angle_to):
@@ -78,3 +106,9 @@ func _draw():
 	
 	var colors = PoolColorArray([Color(0, 0, 1.0, 0.5)])
 	draw_polygon($VisionConePolygon.polygon, colors)
+
+
+func _on_AlertCooldownTimer_timeout():
+	flash_counter = 0
+	if detecting:
+		handle_alert()

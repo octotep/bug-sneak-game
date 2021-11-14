@@ -129,3 +129,7 @@ pressed = ExtResource( 7 )
 passby_press = true
 action = "down"
 visibility_mode = 1
+
+[node name="AlertCooldownTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

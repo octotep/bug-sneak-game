@@ -26,11 +26,11 @@ animations = [ {
 [node name="Camera" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="VisionCone" parent="." instance=ExtResource( 4 )]
+movement_script = ExtResource( 2 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "blink"
 frame = 1
 playing = true
-
-[node name="VisionCone" parent="." instance=ExtResource( 4 )]
-movement_script = ExtResource( 2 )
