@@ -56,41 +56,43 @@ func _physics_process(delta):
 		$AnimatedSprite.set_flip_h(true)
 	
 	if direction.x != 0 and is_on_floor() and not is_crouching:
-		$AnimatedSprite.play("run")
+		if($AnimationPlayer.current_animation != "run"):
+			$AnimationPlayer.play("run")
+		$AnimationPlayer.play("run")
 		_state = STATE.RUNNING
 	elif direction.x == 0 and _state == STATE.RUNNING and is_on_floor():
-		$AnimatedSprite.play("stop")
+		$AnimationPlayer.play("stop")
 		_state = STATE.STOPPING
 	elif direction.x == 0 and _state == STATE.STOPPING and is_on_floor() and $AnimatedSprite.frame == 1:
-		$AnimatedSprite.play("idle")
+		$AnimationPlayer.play("idle")
 		_state = STATE.IDLE
 	elif Input.is_action_just_pressed("jump") and _velocity.y < 0:
-		$AnimatedSprite.play("jump")
+		$AnimationPlayer.play("jump")
 		_state = STATE.START_JUMP
 	elif _velocity.y >= -100 and not is_on_floor() and _state == STATE.START_JUMP:
-		$AnimatedSprite.play("jump_mid")
+		$AnimationPlayer.play("jump_mid")
 		_state = STATE.MID_JUMP
 	elif _velocity.y >= 0 and not is_on_floor():
-		$AnimatedSprite.play("fall")
+		$AnimationPlayer.play("fall")
 		_state = STATE.FALLING
 	elif (_state == STATE.FALLING or _state == STATE.MID_JUMP or _state == STATE.START_JUMP) and is_on_floor():
-		$AnimatedSprite.play("land")
+		$AnimationPlayer.play("land")
 		_state = STATE.LANDING
 	elif _state == STATE.LANDING and $AnimatedSprite.frame == 1:
 		if _velocity.x != 0:
-			$AnimatedSprite.play("run")
+			$AnimationPlayer.play("run")
 			_state = STATE.RUNNING
 		elif _velocity.x == 0:
-			$AnimatedSprite.play("idle")
+			$AnimationPlayer.play("idle")
 			_state = STATE.IDLE
 	elif _velocity.x == 0 and is_on_floor() and is_crouching:
-		$AnimatedSprite.play("crouch")
+		$AnimationPlayer.play("crouch")
 		_state = STATE.CROUCHING
 	elif _velocity.x == 0 and is_on_floor() and Input.is_action_just_released("down"):
-		$AnimatedSprite.play("idle")
+		$AnimationPlayer.play("idle")
 		_state = STATE.IDLE
 	elif _velocity.x != 0 and is_on_floor() and is_crouching:
-		$AnimatedSprite.play("crawl")
+		$AnimationPlayer.play("crawl")
 		_state = STATE.CRAWLING
 
 
