@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark24.png" type="Texture" id=10]
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark12.png" type="Texture" id=11]
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight12.png" type="Texture" id=12]
+[ext_resource path="res://assets/sounds/footstep_concrete_002.ogg" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -493,6 +494,24 @@ tracks/3/keys = {
 "update": 1,
 "values": [ Vector2( 1.0625, 21.6875 ) ]
 }
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.07,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 13 )
+} ],
+"times": PoolRealArray( 0.1, 0.6 )
+}
 
 [sub_resource type="Animation" id=11]
 resource_name = "stop"
@@ -679,3 +698,5 @@ visibility_mode = 1
 [node name="AlertCooldownTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
