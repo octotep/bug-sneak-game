@@ -5,14 +5,14 @@ export var detect_radius = 150
 export var field_of_view = 40
 export var flash_frequency = 0.3
 
-# Scanning specific exports
-export var min_angle = 0
-export var max_angle = 180
-export var scan_speed = 0.15
-
 export(GDScript) var movement_script
 
-var angle = 0
+const RED = Color(1.0, 0, 0, 0.4)
+const GREEN = Color(0, 1.0, 0, 0.4)
+const YELLOW = Color(1.0, 1.0, 0, 0.6)
+
+var draw_color = GREEN
+
 var detecting = false
 var flash_counter = 0
 
@@ -20,23 +20,30 @@ signal alerted
 
 
 func _ready():
+	
+	# Connect the alert across scenes so the player knows what's up
 	for player in get_tree().get_nodes_in_group("player"):
 		connect("alerted", player, "_on_alerted")
+	
+	# Set the collision polygon based on export vars
+	var polygon = get_shape_points(
+		position,
+		detect_radius,
+		rotation_degrees - field_of_view / 2,
+		rotation_degrees + field_of_view / 2
+	)
+	$VisionConePolygon.polygon = polygon
 
 
 func _process(delta):
 	
+	# This allows for custom cone movement.
+	# Default is static, though it inherits its parents' transforms.
 	$VisionConeMovement.set_script(movement_script)
-	angle = $VisionConeMovement.update_angle()
+	rotation_degrees = $VisionConeMovement.update_angle()
 	
-#	var polygon = get_shape_points(
-#		position,
-#		detect_radius,
-#		angle + 45 - field_of_view / 2,
-#		angle + 45 + field_of_view / 2
-#	)
-#	$VisionConePolygon.polygon = polygon
-	
+	# We need some indication that the cone has spotted the player,
+	# and that there's some cooldown where it won't spot the player again.
 	if not $AlertCooldownTimer.is_stopped():
 		flash_counter += delta
 		if flash_counter >= flash_frequency:
@@ -57,19 +64,17 @@ func handle_alert():
 	emit_signal("alerted")
 
 
-const RED = Color(1.0, 0, 0, 0.4)
-const GREEN = Color(0, 1.0, 0, 0.4)
-const YELLOW = Color(1.0, 1.0, 0, 0.6)
-const CLEAR = Color(0, 0, 0, 0)
-
-var draw_color = GREEN
-
-
 func _on_VisionCone_body_entered(body):
 	if body.is_in_group("player"):
 		detecting = true
 		if $AlertCooldownTimer.is_stopped():
 			handle_alert()
+
+
+func _on_AlertCooldownTimer_timeout():
+	flash_counter = 0
+	if detecting:
+		handle_alert()
 
 
 func _on_VisionCone_body_exited(body):
@@ -99,16 +104,7 @@ func _draw():
 	draw_circle_arc_poly(
 		position,
 		detect_radius,
-		angle - field_of_view / 2,
-		angle + field_of_view / 2,
+		rotation_degrees - field_of_view / 2,
+		rotation_degrees + field_of_view / 2,
 		draw_color
 	)
-	
-	var colors = PoolColorArray([Color(0, 0, 1.0, 0.5)])
-	draw_polygon($VisionConePolygon.polygon, colors)
-
-
-func _on_AlertCooldownTimer_timeout():
-	flash_counter = 0
-	if detecting:
-		handle_alert()
