@@ -133,7 +133,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "crawl" ]
+"values": [ "crouch" ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AnimatedSprite:frame")
@@ -590,7 +590,7 @@ anims/stop = SubResource( 10 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -1 )
 frames = ExtResource( 1 )
-animation = "idle"
+animation = "crawl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0340118, 28.2198 )

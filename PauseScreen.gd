@@ -32,7 +32,6 @@ func close():
 
 
 func open():
-	print(get_tree().paused)
 	show()
 	resume_button.grab_focus()
 

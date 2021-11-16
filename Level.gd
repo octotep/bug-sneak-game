@@ -17,7 +17,6 @@ func _unhandled_input(event):
 	# in the inspector.
 	if event.is_action_pressed("toggle_pause"):
 		var tree = get_tree()
-		print(tree.paused)
 		tree.paused = not tree.paused
 		if tree.paused:
 			_pause_menu.open()
