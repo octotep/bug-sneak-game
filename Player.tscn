@@ -14,7 +14,7 @@
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight12.png" type="Texture" id=12]
 [ext_resource path="res://assets/sounds/footstep_concrete_002.ogg" type="AudioStream" id=13]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -65,7 +65,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7.9812, 20.6417 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "crawl"
 length = 1.6
 loop = true
@@ -119,7 +119,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1.15141, 28.1226 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "crouch"
 loop = true
 step = 0.2
@@ -133,7 +133,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "crawl" ]
+"values": [ "crouch" ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AnimatedSprite:frame")
@@ -172,7 +172,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7.9812, 12.7433 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "fall"
 length = 0.2
 loop = true
@@ -226,8 +226,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.0625005, 23.0601 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "idle"
+[sub_resource type="Animation" id=5]
 length = 1.12
 loop = true
 step = 0.16
@@ -280,7 +279,7 @@ tracks/3/keys = {
 "values": [ Vector2( 7.9812, 20.6417 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "jump"
 length = 0.2
 loop = true
@@ -334,7 +333,7 @@ tracks/3/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 resource_name = "jump_mid"
 length = 0.2
 loop = true
@@ -388,7 +387,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1.0625, 17.875 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 resource_name = "land"
 length = 0.334
 loop = true
@@ -442,7 +441,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1.0625, 25.3125 ), Vector2( 1.0625, 21.6875 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=9]
 resource_name = "run"
 loop = true
 step = 0.125
@@ -513,7 +512,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0.1, 0.6 )
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=10]
 resource_name = "stop"
 length = 0.25
 loop = true
@@ -567,33 +566,35 @@ tracks/3/keys = {
 "values": [ Vector2( 1.0625, 21.6875 ), Vector2( 4.76837e-07, 21.6875 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7.9812, 20.6417 )
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 7.9812, 12.7433 )
 
-[node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
+[node name="KinematicBody2D" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_mask = 6
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
-anims/crawl = SubResource( 5 )
-anims/crouch = SubResource( 4 )
-anims/fall = SubResource( 6 )
-anims/idle = SubResource( 3 )
-anims/jump = SubResource( 7 )
-anims/jump_mid = SubResource( 8 )
-anims/land = SubResource( 9 )
-anims/run = SubResource( 10 )
-anims/stop = SubResource( 11 )
+anims/RESET = SubResource( 1 )
+anims/crawl = SubResource( 2 )
+anims/crouch = SubResource( 3 )
+anims/fall = SubResource( 4 )
+anims/idle = SubResource( 5 )
+anims/jump = SubResource( 6 )
+anims/jump_mid = SubResource( 7 )
+anims/land = SubResource( 8 )
+anims/run = SubResource( 9 )
+anims/stop = SubResource( 10 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -1 )
 frames = ExtResource( 1 )
-animation = "idle"
+animation = "crawl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.0340118, 28.2198 )
-shape = SubResource( 1 )
+position = Vector2( 0.659012, 28.2433 )
+shape = SubResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
