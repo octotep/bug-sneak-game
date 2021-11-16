@@ -567,7 +567,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 7.9812, 12.7433 )
+extents = Vector2( 7.9812, 20.6417 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=[
 "player",
@@ -593,7 +593,7 @@ frames = ExtResource( 1 )
 animation = "crawl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.659012, 28.2433 )
+position = Vector2( 0.0340118, 28.2198 )
 shape = SubResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
