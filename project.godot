@@ -22,6 +22,12 @@ window/stretch/aspect="keep"
 
 stretch=false
 
+[importer_defaults]
+
+texture={
+"flags/filter": false
+}
+
 [input]
 
 right={
