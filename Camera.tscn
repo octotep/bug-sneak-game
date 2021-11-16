@@ -5,12 +5,10 @@
 [ext_resource path="res://VisionCone.tscn" type="PackedScene" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 32, 0, 32, 32 )
 
@@ -28,6 +26,7 @@ script = ExtResource( 3 )
 [node name="VisionCone" parent="." instance=ExtResource( 4 )]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -1, 0 )
 rotation = 1.5708
 frames = SubResource( 3 )
 animation = "blink"
