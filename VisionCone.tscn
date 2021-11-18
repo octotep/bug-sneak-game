@@ -4,6 +4,7 @@
 [ext_resource path="res://DefaultVisionConeMovement.gd" type="Script" id=2]
 
 [node name="VisionCone" type="Area2D"]
+collision_layer = 0
 script = ExtResource( 1 )
 movement_script = ExtResource( 2 )
 
