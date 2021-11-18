@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://mall_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://PauseScreen.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Sentry.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=28]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -0.311279, 1.88684, 0, 0, 0, 0, 235.222, 1.4494 )
+}
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 3 )
@@ -47,8 +52,20 @@ min_angle = 90
 max_angle = 135
 scan_speed = 0.25
 
-[node name="Sentry" parent="Background" instance=ExtResource( 5 )]
-position = Vector2( 407.839, 561.55 )
+[node name="AnimatedSprite" parent="Background/Camera" index="1"]
+frame = 0
+
+[node name="Path2D" type="Path2D" parent="Background"]
+position = Vector2( 528.772, 560.237 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Background/Path2D"]
+position = Vector2( -0.311279, 1.88684 )
+rotate = false
+loop = false
+
+[node name="Sentry" parent="Background/Path2D/PathFollow2D" instance=ExtResource( 5 )]
+drive_speed = 50
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 100
