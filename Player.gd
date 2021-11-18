@@ -6,6 +6,7 @@ export var crawl_speed = Vector2(75.0, 350.0)
 onready var gravity = ProjectSettings.get("physics/2d/default_gravity")
 
 const FLOOR_DETECT_DISTANCE = 20
+const ALERT_OFFSET = 80
 
 var _velocity = Vector2.ZERO
 
@@ -99,8 +100,24 @@ func _physics_process(delta):
 var max_alerts = 3
 var current_alerts = 0
 
+func _ready():
+	for i in max_alerts:
+		var new_alert = Sprite.new()
+		new_alert.texture = $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.texture
+		new_alert.hframes = $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.hframes
+		$UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.add_child(new_alert)
+		
+	for alert in $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.get_children():
+			var index = alert.get_index()
+			var x = (max_alerts - index - 1) * ALERT_OFFSET
+			alert.position = Vector2(x, 0)
+
 
 func _on_alerted():
 	current_alerts += 1
+	for alert in $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.get_children():
+			if alert.get_index() < current_alerts:
+				alert.frame = 1
+		
 	if current_alerts >= max_alerts:
 		get_tree().change_scene("res://TitleScreen.tscn")
