@@ -1,7 +1,26 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/mall/export/sprites/sentry.png" type="Texture" id=1]
 [ext_resource path="res://Sentry.gd" type="Script" id=2]
+[ext_resource path="res://VisionCone.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "move"
@@ -21,25 +40,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "move"
-length = 0.8
-loop = true
-step = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7 ]
-}
-
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 14.2702, 14.7221 )
 
 [node name="Sentry" type="KinematicBody2D"]
@@ -47,12 +48,20 @@ script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 method_call_mode = 1
-anims/idle = SubResource( 2 )
-anims/move = SubResource( 3 )
+anims/idle = SubResource( 1 )
+anims/move = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.148651, 0.817579 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 0, -8.5 )
+rotation = 1.5708
+
+[node name="VisionCone" parent="Node2D" instance=ExtResource( 3 )]
+detect_radius = 100
+field_of_view = 25
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -60,3 +69,7 @@ offset = Vector2( 0, -1 )
 hframes = 4
 vframes = 2
 frame = 5
+
+[node name="PatrolWait" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
