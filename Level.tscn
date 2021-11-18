@@ -36,6 +36,7 @@ tile_data = PoolIntArray( 196612, 11, 0, 196623, 11, 0, 196633, 11, 0, 262148, 1
 [node name="TileMap" type="TileMap" parent="Background/decorations"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
+collision_layer = 9
 format = 1
 tile_data = PoolIntArray( 524323, 21, 0, 524324, 23, 0, 589858, 21, 0, 589859, 22, 0, 655393, 21, 0, 655394, 22, 0, 720928, 21, 0, 720929, 22, 0, 786463, 21, 0, 786464, 22, 0, 851998, 21, 0, 851999, 22, 0, 917533, 21, 0, 917534, 22, 0, 983068, 21, 0, 983069, 22, 0, 1048603, 21, 0, 1048604, 22, 0, 1114139, 20, 0 )
 
