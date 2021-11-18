@@ -119,7 +119,7 @@ func get_occluded_points(points_arc):
 
 
 func get_shape_points(center, radius, angle_from, angle_to):
-	var nb_points = 32
+	var nb_points = 64
 	var points_arc = PoolVector2Array()
 	points_arc.append(center)
 	
