@@ -74,6 +74,7 @@ toggle_pause={
 2d_physics/layer_1="player"
 2d_physics/layer_2="floor"
 2d_physics/layer_3="door"
+2d_physics/layer_4="vision_cone"
 
 [physics]
 

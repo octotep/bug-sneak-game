@@ -16,6 +16,11 @@ var draw_color = GREEN
 var detecting = false
 var flash_counter = 0
 
+# We aren't using the node's collision mask because
+# we DO want to collide with the player for detection purposes,
+# but we DON'T want the player to occlude the cone.
+const VISION_CONE_COLLISION_MASK = 8
+
 signal alerted
 
 
@@ -24,6 +29,9 @@ func _ready():
 	# Connect the alert across scenes so the player knows what's up
 	for player in get_tree().get_nodes_in_group("player"):
 		connect("alerted", player, "_on_alerted")
+
+
+func _physics_process(delta):
 	
 	# Set the collision polygon based on export vars
 	var polygon = get_shape_points(
@@ -32,7 +40,8 @@ func _ready():
 		rotation_degrees - field_of_view / 2,
 		rotation_degrees + field_of_view / 2
 	)
-	$VisionConePolygon.polygon = polygon
+	var occluded_polygon = get_occluded_points(polygon)
+	$VisionConePolygon.polygon = occluded_polygon
 
 
 func _process(delta):
@@ -82,29 +91,49 @@ func _on_VisionCone_body_exited(body):
 		detecting = false
 
 
-func get_shape_points(center, radius, angle_from, angle_to):
-	var nb_points = 32
-	var points_arc = PoolVector2Array()
-	points_arc.push_back(center)
+func get_occluded_points(points_arc):
+	var space_state = get_world_2d().direct_space_state
+	var center = points_arc[0]
 	
-	for i in range(nb_points + 1):
-		var angle_point = deg2rad(angle_from + i * (angle_to - angle_from) / nb_points - 90)
-		points_arc.push_back(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
+	for i in range(points_arc.size()):
+		
+		# Skip the first one because that's always the center
+		if i == 0:
+			continue
+		
+		var point = points_arc[i]
+		var intersect_result = space_state.intersect_ray(
+			to_global(center),
+			to_global(point),
+			[],
+			VISION_CONE_COLLISION_MASK
+		)
+		
+		# This means there was no intersection, and we can use the original point
+		if intersect_result.empty():
+			continue
+		
+		points_arc.set(i, to_local(intersect_result.position))
 	
 	return points_arc
 
 
-func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
+func get_shape_points(center, radius, angle_from, angle_to):
+	var nb_points = 32
+	var points_arc = PoolVector2Array()
+	points_arc.append(center)
+	
+	for i in range(nb_points + 1):
+		var angle_point = deg2rad(angle_from + i * (angle_to - angle_from) / nb_points - 90)
+		points_arc.append(center + Vector2(cos(angle_point), sin(angle_point)) * radius)
+	
+	return points_arc
+
+
+func draw_computed_polygon(color):
 	var colors = PoolColorArray([color])
-	var points_arc = get_shape_points(center, radius, angle_from, angle_to)
-	draw_polygon(points_arc, colors)
+	draw_polygon($VisionConePolygon.polygon, colors)
 
 
 func _draw():
-	draw_circle_arc_poly(
-		position,
-		detect_radius,
-		rotation_degrees - field_of_view / 2,
-		rotation_degrees + field_of_view / 2,
-		draw_color
-	)
+	draw_computed_polygon(draw_color)
