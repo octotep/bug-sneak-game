@@ -30,4 +30,7 @@ position = Vector2( -1, 0 )
 rotation = 1.5708
 frames = SubResource( 3 )
 animation = "blink"
+frame = 1
 playing = true
+offset = Vector2( 0, -2 )
+flip_v = true
