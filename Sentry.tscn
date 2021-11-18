@@ -4,7 +4,7 @@
 [ext_resource path="res://Sentry.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=2]
-resource_name = "idle"
+resource_name = "move"
 length = 0.8
 loop = true
 step = 0.2
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [ 4, 5, 6, 7 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 14.2702, 14.7221 )
 
 [node name="Sentry" type="KinematicBody2D"]
@@ -52,7 +52,7 @@ anims/move = SubResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.148651, 0.817579 )
-shape = SubResource( 1 )
+shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
