@@ -20,6 +20,7 @@ func _ready():
 
 func close():
 	get_tree().paused = false
+	resume_button.release_focus()
 	# Tween's interpolate_property has these arguments:
 	# (Target object, "Property:OptionalSubProperty", From value, To value,
 	# Tween duration, Transition type, Easing type, Optional delay)

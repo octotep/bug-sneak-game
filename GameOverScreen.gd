@@ -18,18 +18,6 @@ func _ready():
 	hide()
 
 
-func close():
-	# Tween's interpolate_property has these arguments:
-	# (Target object, "Property:OptionalSubProperty", From value, To value,
-	# Tween duration, Transition type, Easing type, Optional delay)
-	tween.interpolate_property(self, "modulate:a", 1.0, 0.0,
-			fade_out_duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
-	tween.interpolate_property(center_cont, "rect_position",
-			_end_position, _start_position, fade_out_duration,
-			Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	tween.start()
-
-
 func open():
 	show()
 	main_menu_button.grab_focus()
