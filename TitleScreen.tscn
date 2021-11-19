@@ -89,4 +89,5 @@ custom_fonts/font = SubResource( 6 )
 text = "Quit Game"
 
 [connection signal="pressed" from="VBoxContainer/Buttons/NewGame" to="." method="_on_NewGame_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/Quit" to="." method="_on_Quit_pressed"]

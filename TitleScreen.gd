@@ -10,8 +10,12 @@ func _ready():
 		_quit_button.visible = false
 
 func _on_NewGame_pressed():
-	var _ret = get_tree().change_scene("res://Level.tscn")
+	var _ret = get_tree().change_scene("res://Intro.tscn")
 
 func _on_Quit_pressed():
 	get_tree().get_root().notification(NOTIFICATION_WM_QUIT_REQUEST)
 	get_tree().quit()
+
+
+func _on_Continue_pressed():
+	var _ret = get_tree().change_scene("res://Level.tscn")

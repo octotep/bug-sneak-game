@@ -53,6 +53,9 @@ min_angle = 90
 max_angle = 135
 scan_speed = 0.25
 
+[node name="AnimatedSprite" parent="Background/Camera" index="1"]
+frame = 1
+
 [node name="Path2D" type="Path2D" parent="Background"]
 position = Vector2( 528.772, 560.237 )
 curve = SubResource( 1 )
