@@ -1,0 +1,503 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Intro.gd" type="Script" id=1]
+[ext_resource path="res://assets/opening/cockroach.png" type="Texture" id=2]
+[ext_resource path="res://assets/opening/opening cutscene.png" type="Texture" id=3]
+[ext_resource path="res://assets/opening/textbox.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/kenney_mini_square.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Text Crawl/Label:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text Crawl/FadeOutOverlay:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BugScene/NinePatchRect/Character:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BugScene/NinePatchRect/Blurb:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "" ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BugScene/NinePatchRect/Blurb:visible_characters")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -1 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Text Crawl/FadeOutOverlay:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Text crawl"
+length = 7.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Text Crawl/Label:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 16 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Text Crawl/FadeOutOverlay:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4.5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Text Crawl/Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Text Crawl/FadeOutOverlay:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.001 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/kenney_mini_square.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 55
+font_data = SubResource( 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "BugScene"
+length = 43.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("../BugScene/CenterContainer/TextureRect/Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 43.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../BugScene/FadeOutOverlay:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5, 41, 43.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../BugScene/FadeOutOverlay:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 43.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../BugScene/CenterContainer/TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 43.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../BugScene/NinePatchRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.9, 40, 43.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../BugScene/NinePatchRect/Character:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 2.9, 40, 43.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../BugScene/NinePatchRect/Blurb:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 2.9, 40, 43.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../BugScene/NinePatchRect/Blurb:visible_characters")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2.9, 6.1, 7.2, 7.3, 7.7, 11.9, 13.1, 13.2, 13.7, 17.1, 18, 18.1, 18.9, 22.2, 23.1, 23.2, 24, 27.6, 28.5, 28.6, 29.4, 33.4, 34.3, 34.4, 35.2, 39.2, 40.1, 40.2, 41 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 51, 51, 0, 0, 56, 56, 0, 0, 44, 44, 0, 0, 50, 50, 0, 0, 78, 78, 0, 0, 75, 75, 0, 0, 68, 68, 0, 0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../BugScene/NinePatchRect/Blurb:text")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 2.9, 7.2, 7.7, 13.1, 13.7, 18, 18.9, 23.1, 24, 28.5, 29.4, 34.3, 35.2, 40.1, 41 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "(One Plasma ray? That'll be $10000 dollars please!)", "", "(Thank You for shopping at Sci-Fi Emporium! Come again!)", "", "Stupid humans and their rampant consumerism.", "", "I wish I could leave this hell they call a \"MALL\".", "", "It's so large I could never find my way out - even if I wandered for 10 years.
+", "", "I wish I could go back to the outside where there was dirt and it was nice.
+", "", "I wonder if I could use something in this mall to get out of here...
+", "", "" ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../BugScene/NinePatchRect/Character:text")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 2.9, 13.1, 13.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ "(Store Clerk)
+", "", "Cockroach" ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../BugScene/NinePatchRect/Blurb:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 2.9, 13.1, 13.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../BugScene/CenterContainer:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 43.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../BugScene/CenterContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../BugScene/NinePatchRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../BugScene/FadeOutOverlay:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="DynamicFont" id=7]
+size = 35
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Opening Cutscene"
+length = 100.0
+tracks/0/type = "animation"
+tracks/0/path = NodePath("Text Crawl")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": PoolStringArray( "Text crawl" ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "animation"
+tracks/1/path = NodePath("BugScene")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": PoolStringArray( "BugScene" ),
+"times": PoolRealArray( 8 )
+}
+
+[node name="Intro" type="Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Text Crawl" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+"anims/Text crawl" = SubResource( 4 )
+
+[node name="Label" type="Label" parent="Text Crawl"]
+visible = false
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 0.6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "In the year 20xx..."
+align = 1
+valign = 1
+percent_visible = 0.0625
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeOutOverlay" type="ColorRect" parent="Text Crawl"]
+visible = false
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BugScene" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Cutscene")
+anims/BugScene = SubResource( 6 )
+anims/RESET = SubResource( 9 )
+
+[node name="CenterContainer" type="CenterContainer" parent="BugScene"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="BugScene/CenterContainer"]
+margin_left = 152.0
+margin_top = 90.0
+margin_right = 872.0
+margin_bottom = 510.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="BugScene/CenterContainer/TextureRect"]
+position = Vector2( 453.963, 166.877 )
+texture = ExtResource( 2 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BugScene"]
+visible = false
+anchor_left = 0.084
+anchor_top = 0.585
+anchor_right = 0.926
+anchor_bottom = 0.913
+margin_top = 24.6
+margin_right = -12.288
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 48, 48 )
+patch_margin_left = 18
+patch_margin_top = 15
+patch_margin_right = 26
+patch_margin_bottom = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Character" type="Label" parent="BugScene/NinePatchRect"]
+anchor_left = 0.034
+anchor_top = 0.07
+anchor_right = 0.171
+anchor_bottom = 0.256
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 7 )
+
+[node name="Blurb" type="Label" parent="BugScene/NinePatchRect"]
+anchor_left = 0.094
+anchor_top = 0.335
+anchor_right = 0.906
+anchor_bottom = 0.858
+margin_left = 0.107513
+margin_right = 0.972412
+margin_bottom = 0.25238
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 8 )
+autowrap = true
+percent_visible = 0.111111
+
+[node name="FadeOutOverlay" type="ColorRect" parent="BugScene"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StoreScene" type="AnimationPlayer" parent="."]
+
+[node name="Control" type="Control" parent="StoreScene"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="StoreScene/Control"]
+format = 1
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+"anims/Opening Cutscene" = SubResource( 5 )
+
+[connection signal="animation_finished" from="Cutscene" to="." method="_on_Cutscene_animation_finished"]
