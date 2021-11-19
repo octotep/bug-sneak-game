@@ -342,7 +342,7 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "Opening Cutscene"
-length = 100.0
+length = 51.5
 tracks/0/type = "animation"
 tracks/0/path = NodePath("Text Crawl")
 tracks/0/interp = 1
@@ -421,6 +421,7 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="BugScene/CenterContainer"]
+visible = false
 margin_left = 152.0
 margin_top = 90.0
 margin_right = 872.0
@@ -431,6 +432,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="BugScene/CenterContainer/TextureRect"]
+visible = false
 position = Vector2( 453.963, 166.877 )
 texture = ExtResource( 2 )
 
@@ -455,6 +457,7 @@ __meta__ = {
 }
 
 [node name="Character" type="Label" parent="BugScene/NinePatchRect"]
+visible = false
 anchor_left = 0.034
 anchor_top = 0.07
 anchor_right = 0.171
@@ -463,6 +466,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 7 )
 
 [node name="Blurb" type="Label" parent="BugScene/NinePatchRect"]
+visible = false
 anchor_left = 0.094
 anchor_top = 0.335
 anchor_right = 0.906
@@ -473,13 +477,13 @@ margin_bottom = 0.25238
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 8 )
 autowrap = true
-percent_visible = 0.111111
+percent_visible = 0.0
 
 [node name="FadeOutOverlay" type="ColorRect" parent="BugScene"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
