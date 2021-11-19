@@ -10,6 +10,8 @@ const ALERT_OFFSET = 80
 
 var _velocity = Vector2.ZERO
 
+signal game_over
+
 enum STATE {
 	IDLE,
 	RUNNING,
@@ -108,9 +110,8 @@ func _ready():
 		$UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.add_child(new_alert)
 		
 	for alert in $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.get_children():
-			var index = alert.get_index()
-			var x = (max_alerts - index - 1) * ALERT_OFFSET
-			alert.position = Vector2(x, 0)
+			var x = (max_alerts - alert.get_index() - 1) * ALERT_OFFSET
+			alert.position = Vector2(x, 40)
 
 
 func _on_alerted():
@@ -120,4 +121,4 @@ func _on_alerted():
 				alert.frame = 1
 		
 	if current_alerts >= max_alerts:
-		get_tree().change_scene("res://TitleScreen.tscn")
+		emit_signal("game_over")

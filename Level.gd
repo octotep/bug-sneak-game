@@ -2,13 +2,17 @@ extends Node2D
 # This class contains controls that should always be accessible, like pausing
 # the game or toggling the window full-screen.
 
-
 # The "_" prefix is a convention to indicate that variables are private,
 # that is to say, another node or script should not access them.
 onready var _pause_menu = $InterfaceLayer/PauseScreen
+onready var _game_over_menu = $InterfaceLayer/GameOverScreen
 
 func _init():
 	OS.min_window_size = OS.window_size
+
+func _ready():
+	# Connect the alert across scenes so the player knows what's up
+	$Background/Player.connect("game_over", self, "_game_over")
 
 func _unhandled_input(event):
 	# The GlobalControls node, in the Stage scene, is set to process even
@@ -23,3 +27,7 @@ func _unhandled_input(event):
 		else:
 			_pause_menu.close()
 		get_tree().set_input_as_handled()
+		
+func _game_over():
+	get_tree().paused = true
+	_game_over_menu.open()
