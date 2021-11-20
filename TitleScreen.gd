@@ -7,9 +7,7 @@ func _init():
 	OS.min_window_size = OS.window_size
 	
 func _ready():
-	print(Global.game_state)
 	Global.load_game()
-	print(Global.game_state)	
 	
 	if (OS.get_name() == 'HTML5'):
 		_quit_button.visible = false
