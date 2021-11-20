@@ -8,7 +8,7 @@ export(float) var fade_out_duration = 0.2
 
 onready var center_cont = $ColorRect/CenterContainer
 onready var main_menu_button = center_cont.get_node(@"VBoxContainer/MainMenu")
-onready var quit_button = center_cont.get_node(@"VBoxContainer/LevelSelect")
+onready var quit_button = center_cont.get_node(@"VBoxContainer/Quit")
 
 onready var root = get_tree().get_root()
 onready var scene_root = root.get_child(root.get_child_count() - 1)
@@ -16,7 +16,6 @@ onready var tween = $Tween
 
 
 func _ready():
-	Global.beat_level()
 	if (OS.get_name() == 'HTML5'):
 		quit_button.visible = false
 	hide()
@@ -39,11 +38,11 @@ func _on_MainMenu_pressed():
 	get_tree().change_scene("res://TitleScreen.tscn")
 
 
+func _on_Quit_pressed():
+	get_tree().get_root().notification(NOTIFICATION_WM_QUIT_REQUEST)
+	get_tree().quit()
+
+
 func _on_Tween_all_completed():
 	if modulate.a < 0.5:
 		hide()
-
-
-func _on_LevelSelect_pressed():
-	get_tree().paused = false
-	get_tree().change_scene("res://LevelSelect.tscn")

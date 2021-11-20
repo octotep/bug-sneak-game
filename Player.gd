@@ -9,8 +9,10 @@ const FLOOR_DETECT_DISTANCE = 20
 const ALERT_OFFSET = 80
 
 var _velocity = Vector2.ZERO
+var in_door = false
 
 signal game_over
+signal win
 
 enum STATE {
 	IDLE,
@@ -33,6 +35,11 @@ func get_direction():
 	return Vector2(x, y)
 
 func _physics_process(delta):
+	# Did we just win? Nice
+	if Input.is_action_just_pressed("jump") and is_on_floor() and in_door:
+		emit_signal("win")
+		return
+		
 	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
 
 	var speed = run_speed
@@ -122,3 +129,12 @@ func _on_alerted():
 		
 	if current_alerts >= max_alerts:
 		emit_signal("game_over")
+
+
+func _approached_door():
+	in_door = true
+	$AnimatedSprite/Sprite.visible = true
+
+func _retreated_from_door():
+	in_door = false
+	$AnimatedSprite/Sprite.visible = false
