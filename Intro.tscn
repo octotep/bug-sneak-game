@@ -421,7 +421,6 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="BugScene/CenterContainer"]
-visible = false
 margin_left = 152.0
 margin_top = 90.0
 margin_right = 872.0
@@ -432,7 +431,6 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="BugScene/CenterContainer/TextureRect"]
-visible = false
 position = Vector2( 453.963, 166.877 )
 texture = ExtResource( 2 )
 

@@ -5,4 +5,6 @@ func _ready():
 
 
 func _on_Cutscene_animation_finished(anim_name):
-	var _ret = get_tree().change_scene("res://Level.tscn")
+	Global.game_state["levels_unlocked"] = 1
+	print(Global.game_state)
+	var _ret = get_tree().change_scene("res://LevelSelect.tscn")
