@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/item_list_texture.png-2d28bc8a1be6416119c7211e591fa02e.image"
+
+[deps]
+
+source_file="res://assets/item_list_texture.png"
+dest_files=[ "res://.import/item_list_texture.png-2d28bc8a1be6416119c7211e591fa02e.image" ]
+
+[params]
+

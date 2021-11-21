@@ -16,6 +16,7 @@
 [ext_resource path="res://alert.png" type="Texture" id=14]
 [ext_resource path="res://assets/fonts/kenney_mini_square.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://Upgrades.gd" type="Script" id=16]
+[ext_resource path="res://assets/arrow_key.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -574,6 +575,8 @@ extents = Vector2( 7.9812, 20.6417 )
 
 [sub_resource type="DynamicFont" id=12]
 size = 24
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 15 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
@@ -596,6 +599,12 @@ anims/stop = SubResource( 10 )
 position = Vector2( 0, -1 )
 frames = ExtResource( 1 )
 animation = "idle"
+
+[node name="Sprite" type="Sprite" parent="AnimatedSprite"]
+visible = false
+position = Vector2( -0.72744, -17.8317 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 16 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0340118, 28.2198 )
