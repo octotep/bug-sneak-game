@@ -16,8 +16,6 @@ onready var tween = $Tween
 
 
 func _ready():
-	if (OS.get_name() == 'HTML5'):
-		quit_button.visible = false
 	hide()
 
 
