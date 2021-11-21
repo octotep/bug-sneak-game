@@ -14,7 +14,12 @@ func _ready():
 	var min_level = int(min(levels_unlocked, len(levels)))
 	for i in range(min_level):
 		var level = levels[i]
-		item_list.add_item(level["text"], null, true)
+		var play_level = load("res://assets/play_level.png")
+		var beat_level = load("res://assets/beat_level.png")
+		if i < levels_unlocked - 1:
+			item_list.add_item(level["text"], beat_level, true)
+		else:
+			item_list.add_item(level["text"], play_level, true)			
 	
 	Global.save_game()
 	
