@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/sounds/footstep_concrete_002.ogg" type="AudioStream" id=13]
 [ext_resource path="res://alert.png" type="Texture" id=14]
 [ext_resource path="res://assets/fonts/kenney_mini_square.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Upgrades.gd" type="Script" id=16]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -720,3 +721,6 @@ wait_time = 3.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Upgrades" type="Node" parent="."]
+script = ExtResource( 16 )

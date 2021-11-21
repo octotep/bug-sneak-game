@@ -25,6 +25,8 @@ enum STATE {
 }
 var _state = STATE.IDLE
 
+var zap_range = 50
+
 func get_direction():
 	var x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y = 0
@@ -98,7 +100,6 @@ func _physics_process(delta):
 		$AnimationPlayer.play("crawl")
 		_state = STATE.CRAWLING
 
-
 var max_alerts = 3
 var current_alerts = 0
 
@@ -112,7 +113,12 @@ func _ready():
 	for alert in $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.get_children():
 			var x = (max_alerts - alert.get_index() - 1) * ALERT_OFFSET
 			alert.position = Vector2(x, 40)
+	
+	# TODO remove this - just for debug
+	$Upgrades.has_zapper = true
 
+func _draw():
+	draw_line(Vector2(0, 20), Vector2(zap_range, 20), Color(0, 0, 0), 5.0)
 
 func _on_alerted():
 	current_alerts += 1
