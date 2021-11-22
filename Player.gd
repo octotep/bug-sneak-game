@@ -27,7 +27,10 @@ enum STATE {
 }
 var _state = STATE.IDLE
 
+var zap_timer = 0 # timers below 0.5 seconds aren't recommended, so we handle it in code
+var zap_time_max = 0.25
 var zap_range = 50
+var zapping = false
 
 func get_direction():
 	var x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -62,10 +65,15 @@ func _physics_process(delta):
 	_velocity.y += gravity * delta
 	
 	# Update floor animations based on x value
+	# KinematicBody2D's have borked physics when trying to flip their scales.
+	# Setting global transforms like this is a workaround.
+	# I'll leave the local scale transform commented, to show how simple it *could* have been.
 	if _velocity.x > 0:
-		$AnimatedSprite.set_flip_h(false)
+		set_global_transform(Transform2D(Vector2(1, 0), Vector2(0, 1), position))
+#		scale.x = 1
 	elif _velocity.x < 0:
-		$AnimatedSprite.set_flip_h(true)
+		set_global_transform(Transform2D(Vector2(-1, 0), Vector2(0, 1), position))
+#		scale.x = -1
 	
 	if direction.x != 0 and is_on_floor() and not is_crouching:
 		if($AnimationPlayer.current_animation != "run"):
@@ -106,6 +114,25 @@ func _physics_process(delta):
 	elif _velocity.x != 0 and is_on_floor() and is_crouching:
 		$AnimationPlayer.play("crawl")
 		_state = STATE.CRAWLING
+	
+	# Zapping
+	if $Upgrades.has_zapper:
+
+		if zap_timer > zap_time_max:
+			zapping = false
+			zap_timer = 0
+			$Zapper/ZapperSprite.visible = false
+			$Zapper/CollisionShape2D.disabled = true
+
+		if zap_timer == 0 and Input.is_key_pressed(KEY_Z):
+			zapping = true
+
+		if zapping:
+			zap_timer += delta
+			$Zapper/ZapperSprite.visible = true
+			$Zapper/CollisionShape2D.disabled = false
+	
+	update()
 
 var max_alerts = 3
 var current_alerts = 0
@@ -124,9 +151,6 @@ func _ready():
 	# TODO remove this - just for debug
 	$Upgrades.has_zapper = true
 
-func _draw():
-	draw_line(Vector2(0, 20), Vector2(zap_range, 20), Color(0, 0, 0), 5.0)
-
 func _on_alerted():
 	current_alerts += 1
 	for alert in $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/alerts.get_children():
@@ -139,8 +163,8 @@ func _on_alerted():
 
 func _approached_door():
 	in_door = true
-	$AnimatedSprite/Sprite.visible = true
+	$AnimatedSprite/EnterDoorSprite.visible = true
 
 func _retreated_from_door():
 	in_door = false
-	$AnimatedSprite/Sprite.visible = false
+	$AnimatedSprite/EnterDoorSprite.visible = false

@@ -44,6 +44,7 @@ tracks/0/keys = {
 extents = Vector2( 14.2702, 14.7221 )
 
 [node name="Sentry" type="KinematicBody2D"]
+collision_layer = 17
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -60,6 +61,7 @@ position = Vector2( 0, -8.5 )
 rotation = 1.5708
 
 [node name="VisionCone" parent="Node2D" instance=ExtResource( 3 )]
+rotation = -3.57628e-06
 detect_radius = 100
 field_of_view = 25
 

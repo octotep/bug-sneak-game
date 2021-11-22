@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -16,7 +16,9 @@
 [ext_resource path="res://alert.png" type="Texture" id=14]
 [ext_resource path="res://assets/fonts/kenney_mini_square.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://Upgrades.gd" type="Script" id=16]
-[ext_resource path="res://assets/arrow_key.png" type="Texture" id=16]
+[ext_resource path="res://assets/arrow_key.png" type="Texture" id=17]
+[ext_resource path="res://assets/player/zapper/zapper.png" type="Texture" id=18]
+[ext_resource path="res://Zapper.gd" type="Script" id=19]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -570,6 +572,9 @@ tracks/3/keys = {
 "values": [ Vector2( 1.0625, 21.6875 ), Vector2( 4.76837e-07, 21.6875 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 20, 12 )
+
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 7.9812, 20.6417 )
 
@@ -595,16 +600,31 @@ anims/land = SubResource( 8 )
 anims/run = SubResource( 9 )
 anims/stop = SubResource( 10 )
 
+[node name="Zapper" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 19 )
+
+[node name="ZapperSprite" type="Sprite" parent="Zapper"]
+visible = false
+position = Vector2( 24, 20 )
+texture = ExtResource( 18 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zapper"]
+position = Vector2( 28, 20 )
+shape = SubResource( 14 )
+disabled = true
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -1 )
 frames = ExtResource( 1 )
 animation = "idle"
 
-[node name="Sprite" type="Sprite" parent="AnimatedSprite"]
+[node name="EnterDoorSprite" type="Sprite" parent="AnimatedSprite"]
 visible = false
 position = Vector2( -0.72744, -17.8317 )
 scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0340118, 28.2198 )
@@ -725,11 +745,10 @@ passby_press = true
 action = "down"
 visibility_mode = 1
 
-[node name="AlertCooldownTimer" type="Timer" parent="."]
-wait_time = 3.0
-one_shot = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="Upgrades" type="Node" parent="."]
 script = ExtResource( 16 )
+
+[connection signal="area_entered" from="Zapper" to="Zapper" method="_on_Zapper_area_entered"]
+[connection signal="body_entered" from="Zapper" to="Zapper" method="_on_Zapper_body_entered"]
