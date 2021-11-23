@@ -1,7 +1,7 @@
 extends MarginContainer
 
-onready var _continue_button = $VBoxContainer/Buttons/Continue
-onready var _quit_button = $VBoxContainer/Buttons/Quit
+onready var _continue_button = $MenuLayer/MarginContainer/VBoxContainer/Buttons/Continue
+onready var _quit_button = $MenuLayer/MarginContainer/VBoxContainer/Buttons/Quit
 
 var Bar = preload ("res://TitleScreenBar.tscn")
 
