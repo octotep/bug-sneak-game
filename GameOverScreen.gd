@@ -8,7 +8,8 @@ export(float) var fade_out_duration = 0.2
 
 onready var center_cont = $ColorRect/CenterContainer
 onready var main_menu_button = center_cont.get_node(@"VBoxContainer/MainMenu")
-onready var quit_button = center_cont.get_node(@"VBoxContainer/LevelSelect")
+onready var level_select_button = center_cont.get_node(@"VBoxContainer/LevelSelect")
+onready var quit_button = center_cont.get_node(@"VBoxContainer/Quit")
 
 onready var root = get_tree().get_root()
 onready var scene_root = root.get_child(root.get_child_count() - 1)
@@ -23,7 +24,10 @@ func _ready():
 
 func open():
 	show()
-	main_menu_button.grab_focus()
+	if (is_instance_valid(level_select_button)):
+		level_select_button.grab_focus()
+	else:
+		main_menu_button.grab_focus()
 
 	tween.interpolate_property(self, "modulate:a", 0.0, 1.0,
 			fade_in_duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -42,6 +46,10 @@ func _on_Tween_all_completed():
 	if modulate.a < 0.5:
 		hide()
 
+func _on_Quit_pressed():
+	get_tree().paused = false
+	get_tree().get_root().notification(NOTIFICATION_WM_QUIT_REQUEST)
+	get_tree().quit()
 
 func _on_LevelSelect_pressed():
 	get_tree().paused = false
