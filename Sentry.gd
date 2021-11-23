@@ -49,3 +49,7 @@ func _physics_process(delta):
 			direction = DIR.FORWARDS
 			$Sprite.flip_h = false
 			$Node2D.rotation_degrees = $Node2D.rotation_degrees + 180
+
+func zapped():
+	$Node2D/VisionCone.zapped()
+

@@ -17,6 +17,11 @@ polygon = PoolVector2Array( 0, 0, 0, 0, 0, 0 )
 wait_time = 3.0
 one_shot = true
 
+[node name="DisableTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_VisionCone_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_VisionCone_body_exited"]
 [connection signal="timeout" from="AlertCooldownTimer" to="." method="_on_AlertCooldownTimer_timeout"]
+[connection signal="timeout" from="DisableTimer" to="." method="_on_DisableTimer_timeout"]

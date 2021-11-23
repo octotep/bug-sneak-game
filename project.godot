@@ -83,6 +83,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_2="floor"
 2d_physics/layer_3="door"
 2d_physics/layer_4="vision_cone"
+2d_physics/layer_5="zapper"
 
 [physics]
 

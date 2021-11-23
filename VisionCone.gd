@@ -10,6 +10,8 @@ export(GDScript) var movement_script
 const RED = Color(1.0, 0, 0, 0.4)
 const GREEN = Color(0, 1.0, 0, 0.4)
 const YELLOW = Color(1.0, 1.0, 0, 0.6)
+const CYAN = Color(0, 0.7, 0.7, 0.4)
+const CLEAR = Color(0, 0, 0, 0)
 
 var draw_color = GREEN
 
@@ -23,13 +25,15 @@ const VISION_CONE_COLLISION_MASK = 8
 
 signal alerted
 
-
 func _ready():
 	
 	# Connect the alert across scenes so the player knows what's up
 	for player in get_tree().get_nodes_in_group("player"):
 		connect("alerted", player, "_on_alerted")
-
+	
+	# This allows for custom cone movement.
+	# Default is static, though it inherits its parents' transforms.
+	$VisionConeMovement.set_script(movement_script)
 
 func _physics_process(delta):
 	
@@ -43,17 +47,22 @@ func _physics_process(delta):
 	var occluded_polygon = get_occluded_points(polygon)
 	$VisionConePolygon.polygon = occluded_polygon
 
-
 func _process(delta):
 	
-	# This allows for custom cone movement.
-	# Default is static, though it inherits its parents' transforms.
-	$VisionConeMovement.set_script(movement_script)
 	rotation_degrees = $VisionConeMovement.update_angle()
 	
-	# We need some indication that the cone has spotted the player,
-	# and that there's some cooldown where it won't spot the player again.
-	if not $AlertCooldownTimer.is_stopped():
+	# Vision cones have various reasons to flash.
+	# First we check if it's disabled, because that should always supersede everything else.
+	# Then we check if the cone has detected the player.
+	if not $DisableTimer.is_stopped():
+		flash_counter += delta
+		if flash_counter >= flash_frequency:
+			flash_counter = 0
+			if draw_color == CYAN:
+				draw_color = CLEAR
+			else:
+				draw_color = CYAN
+	elif not $AlertCooldownTimer.is_stopped():
 		flash_counter += delta
 		if flash_counter >= flash_frequency:
 			flash_counter = 0
@@ -66,12 +75,11 @@ func _process(delta):
 	
 	update()
 
-
 func handle_alert():
-	draw_color = RED
-	$AlertCooldownTimer.start()
-	emit_signal("alerted")
-
+	if $DisableTimer.is_stopped():
+		draw_color = RED
+		$AlertCooldownTimer.start()
+		emit_signal("alerted")
 
 func _on_VisionCone_body_entered(body):
 	if body.is_in_group("player"):
@@ -79,17 +87,17 @@ func _on_VisionCone_body_entered(body):
 		if $AlertCooldownTimer.is_stopped():
 			handle_alert()
 
-
 func _on_AlertCooldownTimer_timeout():
 	flash_counter = 0
 	if detecting:
 		handle_alert()
 
+func _on_DisableTimer_timeout():
+	flash_counter = 0
 
 func _on_VisionCone_body_exited(body):
 	if body.is_in_group("player"):
 		detecting = false
-
 
 func get_occluded_points(points_arc):
 	var space_state = get_world_2d().direct_space_state
@@ -117,7 +125,6 @@ func get_occluded_points(points_arc):
 	
 	return points_arc
 
-
 func get_shape_points(center, radius, angle_from, angle_to):
 	var nb_points = 64
 	var points_arc = PoolVector2Array()
@@ -129,11 +136,14 @@ func get_shape_points(center, radius, angle_from, angle_to):
 	
 	return points_arc
 
-
 func draw_computed_polygon(color):
 	var colors = PoolColorArray([color])
 	draw_polygon($VisionConePolygon.polygon, colors)
 
-
 func _draw():
 	draw_computed_polygon(draw_color)
+
+func zapped():
+	if $DisableTimer.is_stopped():
+		draw_color = CYAN
+	$DisableTimer.start()
