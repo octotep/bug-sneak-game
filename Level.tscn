@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://mall_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://PauseScreen.tscn" type="PackedScene" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Sentry.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GameOverScreen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://WinScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sign.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SignOverlay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Camera.tscn" type="PackedScene" id=28]
 
@@ -29,6 +31,14 @@ tile_data = PoolIntArray( 65535, 26, 0, 0, 12, 0, 1, 12, 0, 2, 12, 0, 3, 12, 0, 
 [node name="Door" parent="Background" instance=ExtResource( 4 )]
 position = Vector2( 283.829, 543.967 )
 
+[node name="Sign" parent="Background" instance=ExtResource( 8 )]
+position = Vector2( 386.546, 543.005 )
+sign_text = "Testing this is a test"
+
+[node name="Sign2" parent="Background" instance=ExtResource( 8 )]
+position = Vector2( 446.959, 543.005 )
+sign_text = "Did you know that the critically acclaimed MMORPG Final Fantasy XIV has a free trial, and includes the entirety of A Realm Reborn AND the award-winning Heavensward expansion up to level 60 with no restrictions on playtime?\\n\\nSign up, and enjoy Eorzea today!"
+
 [node name="decorations" type="TileMap" parent="Background"]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
@@ -42,7 +52,7 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 9
 format = 1
-tile_data = PoolIntArray( 524323, 21, 0, 524324, 23, 0, 589858, 21, 0, 589859, 22, 0, 655393, 21, 0, 655394, 22, 0, 720928, 21, 0, 720929, 22, 0, 786463, 21, 0, 786464, 22, 0, 851998, 21, 0, 851999, 22, 0, 917533, 21, 0, 917534, 22, 0, 983068, 21, 0, 983069, 22, 0, 1048603, 21, 0, 1048604, 22, 0, 1114139, 20, 0 )
+tile_data = PoolIntArray( 524323, 21, 0, 524324, 23, 0, 589858, 21, 0, 589859, 22, 0, 655393, 21, 0, 655394, 22, 0, 720928, 21, 0, 720929, 22, 0, 786463, 21, 0, 786464, 22, 0, 851998, 21, 0, 851999, 22, 0, 917533, 21, 0, 917534, 22, 0, 983068, 21, 0, 983069, 22, 0, 1048603, 21, 0, 1048604, 22, 0, 1114139, 20, 0, 1179648, 8, 0, 1179649, 8, 0 )
 
 [node name="Camera" parent="Background" instance=ExtResource( 28 )]
 position = Vector2( 144, 456 )
@@ -84,7 +94,12 @@ visible = false
 [node name="WinScreen" parent="InterfaceLayer" instance=ExtResource( 7 )]
 visible = false
 
+[node name="SignOverlay" parent="InterfaceLayer" instance=ExtResource( 9 )]
+visible = false
+
 [connection signal="body_entered" from="Background/Door" to="." method="_on_Door_body_entered"]
+[connection signal="body_entered" from="Background/Sign" to="." method="_on_Sign_body_entered"]
+[connection signal="body_entered" from="Background/Sign2" to="." method="_on_Sign_body_entered"]
 
 [editable path="Background/Player"]
 [editable path="InterfaceLayer/PauseScreen"]
