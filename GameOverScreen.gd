@@ -42,6 +42,10 @@ func _on_Tween_all_completed():
 	if modulate.a < 0.5:
 		hide()
 
+func _on_Quit_pressed():
+	get_tree().paused = false
+	get_tree().get_root().notification(NOTIFICATION_WM_QUIT_REQUEST)
+	get_tree().quit()
 
 func _on_LevelSelect_pressed():
 	get_tree().paused = false
