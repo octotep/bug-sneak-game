@@ -51,8 +51,11 @@ min_angle = 90
 max_angle = 135
 scan_speed = 0.25
 
-[node name="AnimatedSprite" parent="Background/Camera" index="1"]
-frame = 1
+[node name="Camera2" parent="Background" instance=ExtResource( 28 )]
+position = Vector2( 816, 488 )
+rotation = 1.5708
+min_angle = 90
+max_angle = 160
 
 [node name="Path2D" type="Path2D" parent="Background"]
 position = Vector2( 528.772, 560.237 )
@@ -83,6 +86,5 @@ visible = false
 
 [connection signal="body_entered" from="Background/Door" to="." method="_on_Door_body_entered"]
 
-[editable path="Background/Camera"]
 [editable path="Background/Player"]
 [editable path="InterfaceLayer/PauseScreen"]

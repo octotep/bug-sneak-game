@@ -29,8 +29,9 @@ var _state = STATE.IDLE
 
 var zap_timer = 0 # timers below 0.5 seconds aren't recommended, so we handle it in code
 var zap_time_max = 0.25
-var zap_range = 50
 var zapping = false
+var num_zaps = 0
+var max_zaps = 1
 
 func get_direction():
 	var x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -124,9 +125,10 @@ func _physics_process(delta):
 			$Zapper/ZapperSprite.visible = false
 			$Zapper/CollisionShape2D.disabled = true
 
-		if zap_timer == 0 and Input.is_key_pressed(KEY_Z):
+		if num_zaps > 0 and zap_timer == 0 and Input.is_key_pressed(KEY_Z):
 			zapping = true
-
+			num_zaps -= 1
+		
 		if zapping:
 			zap_timer += delta
 			$Zapper/ZapperSprite.visible = true
@@ -150,6 +152,10 @@ func _ready():
 	
 	# TODO remove this - just for debug
 	$Upgrades.has_zapper = true
+	
+	# Fresh zaps
+	if $Upgrades.has_zapper == true:
+		num_zaps = max_zaps
 
 func _on_alerted():
 	current_alerts += 1

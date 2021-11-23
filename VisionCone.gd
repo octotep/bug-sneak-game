@@ -144,4 +144,6 @@ func _draw():
 	draw_computed_polygon(draw_color)
 
 func zapped():
+	if $DisableTimer.is_stopped():
+		draw_color = CYAN
 	$DisableTimer.start()
