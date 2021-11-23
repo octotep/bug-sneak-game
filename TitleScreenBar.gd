@@ -14,6 +14,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if position.x > 3000:
+	if position.x > get_viewport().size.x + 400:
 		queue_free()
 	move_and_slide(velocity)

@@ -18,7 +18,6 @@ func _ready():
 		_continue_button.visible = false
 
 func _on_BarTimer_timeout():
-	print(get_viewport().size)
 	var e = Bar.instance()
 	var pos = Vector2(-(get_viewport().size.x / 2), randi() % int(get_viewport().size.y))
 
@@ -32,6 +31,7 @@ func _on_BarTimer_timeout():
 		pos.y += rand_range(-50.0, 60.0)
 
 	e.position = pos
+	e.modulate.a = rand_range(0.1, 1.0)
 	add_child(e)
 	
 func _on_NewGame_pressed():
