@@ -7,7 +7,7 @@
 size = 24
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 24
 font_data = ExtResource( 1 )
 
@@ -33,7 +33,6 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="ColorRect"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 50.0
@@ -47,18 +46,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Close" type="Button" parent="ColorRect"]
-anchor_top = 0.5
-anchor_bottom = 1.0
-margin_left = 402.0
-margin_top = 232.0
-margin_right = 522.0
-margin_bottom = -50.0
-grow_vertical = 2
-rect_min_size = Vector2( 120, 0 )
-size_flags_horizontal = 4
-custom_fonts/font = SubResource( 3 )
-text = "Close"
+[node name="Close" type="ToolButton" parent="ColorRect"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+custom_fonts/font = SubResource( 2 )
+text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }

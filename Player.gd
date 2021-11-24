@@ -35,7 +35,7 @@ var zap_time_max = 0.25
 var zapping = false
 var num_zaps = 0
 var max_zaps = 1
-var max_alerts = 5
+var max_alerts = 3
 var current_alerts = 0
 
 func get_direction():

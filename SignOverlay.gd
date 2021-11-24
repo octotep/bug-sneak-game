@@ -16,10 +16,10 @@ func open(input_text):
 	show()
 	text_area.anchor_bottom = 1
 	text_area.anchor_right = 1
-	text_area.margin_bottom = -75
-	text_area.margin_top = 50
-	text_area.margin_right = -50
-	text_area.margin_left = 50
+	text_area.margin_bottom = -50
+	text_area.margin_top = 25
+	text_area.margin_right = -25
+	text_area.margin_left = 25
 	text_area.text = input_text.c_unescape()
 	text_area.show()
 	close_button.grab_focus()
