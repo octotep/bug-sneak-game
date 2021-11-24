@@ -97,7 +97,6 @@ visible = false
 [node name="SignOverlay" parent="InterfaceLayer" instance=ExtResource( 9 )]
 visible = false
 
-[connection signal="body_entered" from="Background/Door" to="." method="_on_Door_body_entered"]
 [connection signal="body_entered" from="Background/Sign" to="." method="_on_Sign_body_entered"]
 [connection signal="body_entered" from="Background/Sign2" to="." method="_on_Sign_body_entered"]
 

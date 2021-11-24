@@ -13,7 +13,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if position.x > get_viewport().size.x + 400:
 		queue_free()
-	move_and_slide(velocity)
+	var _ret = move_and_slide(velocity)
