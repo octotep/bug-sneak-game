@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Intro.gd" type="Script" id=1]
 [ext_resource path="res://assets/opening/cockroach.png" type="Texture" id=2]
@@ -22,6 +22,9 @@
 [ext_resource path="res://assets/player/run/3.png" type="Texture" id=20]
 [ext_resource path="res://assets/player/run/6.png" type="Texture" id=21]
 [ext_resource path="res://assets/player/run/7.png" type="Texture" id=22]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight12.png" type="Texture" id=23]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark12.png" type="Texture" id=24]
+[ext_resource path="res://IntroPauseScreen.gd" type="Script" id=25]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -159,7 +162,7 @@ font_data = SubResource( 1 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "BugScene"
-length = 43.6
+length = 58.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("../BugScene/CenterContainer/TextureRect/Sprite:visible")
 tracks/0/interp = 1
@@ -167,7 +170,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 43.4 ),
+"times": PoolRealArray( 0, 57.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -179,7 +182,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5, 41, 43.4 ),
+"times": PoolRealArray( 0, 1.5, 55.2, 57.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
@@ -191,7 +194,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 43.4 ),
+"times": PoolRealArray( 0, 57.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -203,7 +206,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 43.4 ),
+"times": PoolRealArray( 0, 57.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -215,7 +218,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2.9, 40, 43.4 ),
+"times": PoolRealArray( 0, 2.9, 54.2, 57.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, false, false ]
@@ -227,7 +230,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 2.9, 40, 43.4 ),
+"times": PoolRealArray( 2.9, 54.2, 57.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, false ]
@@ -239,7 +242,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 2.9, 40, 43.4 ),
+"times": PoolRealArray( 2.9, 54.2, 57.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ true, false, false ]
@@ -251,10 +254,10 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 2.9, 6.1, 7.2, 7.3, 7.7, 11.9, 13.1, 13.2, 13.7, 17.1, 18, 18.1, 18.9, 22.2, 23.1, 23.2, 24, 27.6, 28.5, 28.6, 29.4, 33.4, 34.3, 34.4, 35.2, 39.2, 40.1, 40.2, 41 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 2.9, 6.1, 7.2, 7.3, 7.7, 11.9, 13.1, 13.2, 13.7, 17.1, 18, 18.1, 18.9, 22.2, 23.1, 23.2, 24, 27.6, 28.5, 28.6, 29.4, 33.4, 34.3, 34.4, 35.2, 39.2, 40.1, 40.2, 41, 44, 44.9, 45, 45.8, 48.7, 49.6, 49.7, 50.5, 53.3, 54.2, 54.3, 55.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0, 51, 51, 0, 0, 56, 56, 0, 0, 44, 44, 0, 0, 50, 50, 0, 0, 78, 78, 0, 0, 75, 75, 0, 0, 68, 68, 0, 0 ]
+"values": [ 0, 51, 51, 0, 0, 56, 56, 0, 0, 44, 44, 0, 0, 50, 50, 0, 0, 78, 78, 0, 0, 75, 75, 0, 0, 68, 68, 0, 0, 49, 49, 0, 0, 61, 61, 0, 0, 61, 61, 0, 0 ]
 }
 tracks/8/type = "value"
 tracks/8/path = NodePath("../BugScene/NinePatchRect/Blurb:text")
@@ -263,13 +266,13 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 2.9, 7.2, 7.7, 13.1, 13.7, 18, 18.9, 23.1, 24, 28.5, 29.4, 34.3, 35.2, 40.1, 41 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 2.9, 7.2, 7.7, 13.1, 13.7, 18, 18.9, 23.1, 24, 28.5, 29.4, 34.3, 35.2, 40.1, 41, 44.9, 45.8, 49.6, 50.5, 54.2, 55.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ "(One Plasma ray? That'll be $10000 dollars please!)", "", "(Thank You for shopping at Sci-Fi Emporium! Come again!)", "", "Stupid humans and their rampant consumerism.", "", "I wish I could leave this hell they call a \"MALL\".", "", "It's so large I could never find my way out - even if I wandered for 10 years.
 ", "", "I wish I could go back to the outside where there was dirt and it was nice.
 ", "", "I wonder if I could use something in this mall to get out of here...
-", "", "" ]
+", "", "I see some person dropped a body-switcher remote.", "", "If I can use that and change my shape, I could leave forever.", "", "Then I just have to avoid security and I am as free as a bug.", "", "Then I just have to avoid security and I am as free as a bug." ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("../BugScene/NinePatchRect/Character:text")
@@ -303,7 +306,7 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 43.4 ),
+"times": PoolRealArray( 0, 57.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
@@ -745,7 +748,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=5]
 resource_name = "Opening Cutscene"
-length = 72.0
+length = 86.5
 tracks/0/type = "animation"
 tracks/0/path = NodePath("Text Crawl")
 tracks/0/interp = 1
@@ -774,12 +777,25 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "clips": PoolStringArray( "Store" ),
-"times": PoolRealArray( 51.6 )
+"times": PoolRealArray( 66.1 )
 }
+
+[sub_resource type="DynamicFont" id=20]
+size = 64
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 24
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 24
+font_data = ExtResource( 5 )
 
 [node name="Intro" type="Container"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -913,6 +929,7 @@ margin_left = -91.636
 margin_top = -0.420135
 margin_right = -91.636
 margin_bottom = -0.420166
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -949,7 +966,6 @@ frames = SubResource( 15 )
 animation = "idle"
 
 [node name="playerCam" type="Camera2D" parent="StoreScene/Control/AnimatedSprite"]
-current = true
 zoom = Vector2( 0.5, 0.5 )
 limit_left = 165
 limit_right = 677
@@ -983,4 +999,122 @@ __meta__ = {
 [node name="Cutscene" type="AnimationPlayer" parent="."]
 "anims/Opening Cutscene" = SubResource( 5 )
 
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+margin_bottom = -25.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+margin_right = 974.0
+margin_bottom = 550.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+margin_right = 974.0
+margin_bottom = 550.0
+size_flags_vertical = 3
+
+[node name="Control2" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 920.0
+margin_bottom = 550.0
+size_flags_horizontal = 3
+
+[node name="Control" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 924.0
+margin_right = 974.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 50, 100 )
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="TouchScreenButton" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Control"]
+normal = ExtResource( 24 )
+pressed = ExtResource( 23 )
+passby_press = true
+action = "toggle_pause"
+visibility_mode = 1
+
+[node name="PauseScreen" type="Control" parent="UI"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/PauseScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.866667 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PauseScreen/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseScreen/ColorRect/CenterContainer"]
+margin_left = 300.0
+margin_top = 205.0
+margin_right = 724.0
+margin_bottom = 395.0
+custom_constants/separation = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/PauseScreen/ColorRect/CenterContainer/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 20 )
+text = "Game Paused"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PauseScreen/ColorRect/CenterContainer/VBoxContainer"]
+margin_top = 86.0
+margin_right = 424.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 0, 20 )
+
+[node name="Resume" type="Button" parent="UI/PauseScreen/ColorRect/CenterContainer/VBoxContainer"]
+pause_mode = 2
+margin_left = 146.0
+margin_top = 112.0
+margin_right = 278.0
+margin_bottom = 148.0
+rect_min_size = Vector2( 132, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 21 )
+text = "Resume"
+
+[node name="Quit" type="Button" parent="UI/PauseScreen/ColorRect/CenterContainer/VBoxContainer"]
+pause_mode = 2
+margin_left = 146.0
+margin_top = 154.0
+margin_right = 278.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 132, 0 )
+size_flags_horizontal = 4
+custom_fonts/font = SubResource( 22 )
+text = "Skip Intro"
+
+[node name="Tween" type="Tween" parent="UI/PauseScreen"]
+
 [connection signal="animation_finished" from="Cutscene" to="." method="_on_Cutscene_animation_finished"]
+[connection signal="skip_intro" from="UI/PauseScreen" to="." method="_on_PauseScreen_skip_intro"]
+[connection signal="pressed" from="UI/PauseScreen/ColorRect/CenterContainer/VBoxContainer/Resume" to="UI/PauseScreen" method="_on_Resume_pressed"]
+[connection signal="pressed" from="UI/PauseScreen/ColorRect/CenterContainer/VBoxContainer/Quit" to="UI/PauseScreen" method="_on_Quit_pressed"]
