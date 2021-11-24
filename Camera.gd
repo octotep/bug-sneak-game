@@ -6,7 +6,7 @@ export var scan_speed = 0.15
 
 var scan_direction = 1
 
-func _process(delta):
+func _process(_delta):
 	
 	var new_angle = rotation_degrees + (scan_speed * scan_direction)
 	

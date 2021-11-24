@@ -26,16 +26,16 @@ const VISION_CONE_COLLISION_MASK = 8
 signal alerted
 
 func _ready():
-	
+	var _ret
 	# Connect the alert across scenes so the player knows what's up
 	for player in get_tree().get_nodes_in_group("player"):
-		connect("alerted", player, "_on_alerted")
+		_ret = connect("alerted", player, "_on_alerted")
 	
 	# This allows for custom cone movement.
 	# Default is static, though it inherits its parents' transforms.
 	$VisionConeMovement.set_script(movement_script)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	# Set the collision polygon based on export vars
 	var polygon = get_shape_points(

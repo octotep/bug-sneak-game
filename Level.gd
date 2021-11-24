@@ -14,9 +14,9 @@ func _init():
 
 func _ready():
 	# Connect the alert across scenes so the player knows what's up
-	$Background/Player.connect("game_over", self, "_game_over")
-	$Background/Player.connect("win", self, "_win")
-	$Background/Player.connect("open_sign", self, "_open_sign")
+	var _ret = $Background/Player.connect("game_over", self, "_game_over")
+	_ret = $Background/Player.connect("win", self, "_win")
+	_ret = $Background/Player.connect("open_sign", self, "_open_sign")
 
 func _unhandled_input(event):
 	# The GlobalControls node, in the Stage scene, is set to process even
@@ -37,6 +37,7 @@ func _game_over():
 	_game_over_menu.open()
 	
 func _win():
+	Global.beat_level()
 	get_tree().paused = true
 	$Background/Player.visible = false
 	_win_menu.open()

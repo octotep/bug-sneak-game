@@ -27,4 +27,4 @@ func _ready():
 func _on_ItemList_item_selected(index):
 	Global.current_level = index
 	var level_scene = levels[index]["path"]
-	get_tree().change_scene(level_scene)
+	var _ret = get_tree().change_scene(level_scene)

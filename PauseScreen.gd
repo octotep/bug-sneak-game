@@ -51,7 +51,7 @@ func _on_Resume_pressed():
 
 func _on_Quit_pressed():
 	get_tree().paused = false
-	get_tree().change_scene("res://TitleScreen.tscn")
+	var _ret = get_tree().change_scene("res://TitleScreen.tscn")
 
 
 func _on_Tween_all_completed():
