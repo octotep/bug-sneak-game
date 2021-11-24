@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Player.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -19,6 +19,9 @@
 [ext_resource path="res://assets/arrow_key.png" type="Texture" id=17]
 [ext_resource path="res://assets/player/zapper/zapper.png" type="Texture" id=18]
 [ext_resource path="res://Zapper.gd" type="Script" id=19]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight47.png" type="Texture" id=20]
+[ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark47.png" type="Texture" id=21]
+[ext_resource path="res://assets/zap.png" type="Texture" id=22]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -584,6 +587,12 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 15 )
 
+[sub_resource type="DynamicFont" id=15]
+size = 24
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 15 )
+
 [node name="KinematicBody2D" type="KinematicBody2D" groups=["player"]]
 collision_mask = 6
 script = ExtResource( 2 )
@@ -669,9 +678,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label2" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Control2"]
+visible = false
+margin_left = 418.0
+margin_right = 610.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 15 )
+text = "Zaps Remaining:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="alerts" type="Sprite" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Control2"]
 position = Vector2( 32, 32 )
 texture = ExtResource( 14 )
+hframes = 2
+frame = 1
+
+[node name="zaps" type="Sprite" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Control2"]
+position = Vector2( 32, 32 )
+texture = ExtResource( 22 )
 hframes = 2
 frame = 1
 
@@ -743,6 +769,15 @@ normal = ExtResource( 8 )
 pressed = ExtResource( 7 )
 passby_press = true
 action = "down"
+visibility_mode = 1
+
+[node name="Zap" type="TouchScreenButton" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+position = Vector2( -5, 200 )
+rotation = -3.14159
+normal = ExtResource( 21 )
+pressed = ExtResource( 20 )
+passby_press = true
+action = "zap"
 visibility_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

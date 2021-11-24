@@ -10,9 +10,12 @@ const ALERT_OFFSET = 80
 
 var _velocity = Vector2.ZERO
 var in_door = false
+var in_sign = false
+var current_sign = null
 
 signal game_over
 signal win
+signal open_sign(input_text)
 
 enum STATE {
 	IDLE,
@@ -32,6 +35,8 @@ var zap_time_max = 0.25
 var zapping = false
 var num_zaps = 0
 var max_zaps = 1
+var max_alerts = 5
+var current_alerts = 0
 
 func get_direction():
 	var x = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -44,6 +49,10 @@ func _physics_process(delta):
 	# Did we just win? Nice
 	if Input.is_action_just_pressed("jump") and is_on_floor() and in_door:
 		emit_signal("win")
+		return
+		
+	if Input.is_action_just_pressed("jump") and is_on_floor() and in_sign:
+		emit_signal("open_sign", current_sign.sign_text)
 		return
 		
 	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
@@ -125,9 +134,16 @@ func _physics_process(delta):
 			$Zapper/ZapperSprite.visible = false
 			$Zapper/CollisionShape2D.disabled = true
 
-		if num_zaps > 0 and zap_timer == 0 and Input.is_key_pressed(KEY_Z):
+		if num_zaps > 0 and zap_timer == 0 and Input.is_action_just_pressed("zap"):
 			zapping = true
+			for zap in $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/zaps.get_children():
+				if zap.get_index() == max_zaps - num_zaps:
+					zap.frame = 1
 			num_zaps -= 1
+			
+			#if num_zaps == 0:
+			#	$UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/Label2.visible = false
+
 		
 		if zapping:
 			zap_timer += delta
@@ -135,9 +151,6 @@ func _physics_process(delta):
 			$Zapper/CollisionShape2D.disabled = false
 	
 	update()
-
-var max_alerts = 3
-var current_alerts = 0
 
 func _ready():
 	for i in max_alerts:
@@ -156,6 +169,18 @@ func _ready():
 	# Fresh zaps
 	if $Upgrades.has_zapper == true:
 		num_zaps = max_zaps
+		if num_zaps > 0:
+			$UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/Label2.visible = true
+		
+	for i in num_zaps:
+		var new_zap = Sprite.new()
+		new_zap.texture = $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/zaps.texture
+		new_zap.hframes = $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/zaps.hframes
+		$UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/zaps.add_child(new_zap)
+		
+	for zap in $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/zaps.get_children():
+			var x = (num_zaps - zap.get_index() - 1) * ALERT_OFFSET
+			zap.position = Vector2(x + 418, 40)
 
 func _on_alerted():
 	current_alerts += 1
@@ -173,4 +198,14 @@ func _approached_door():
 
 func _retreated_from_door():
 	in_door = false
+	$AnimatedSprite/EnterDoorSprite.visible = false
+	
+func _approached_sign(curr_sign):
+	in_sign = true
+	current_sign = curr_sign
+	$AnimatedSprite/EnterDoorSprite.visible = true
+
+func _retreated_from_sign():
+	in_sign = false
+	current_sign = null
 	$AnimatedSprite/EnterDoorSprite.visible = false
