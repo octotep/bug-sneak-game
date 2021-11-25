@@ -4,6 +4,7 @@ extends Area2D
 export var detect_radius = 150
 export var field_of_view = 40
 export var flash_frequency = 0.3
+export var leniency = 1
 
 export(GDScript) var movement_script
 
@@ -13,9 +14,11 @@ const YELLOW = Color(1.0, 1.0, 0, 0.6)
 const CYAN = Color(0, 0.7, 0.7, 0.4)
 const CLEAR = Color(0, 0, 0, 0)
 
-var draw_color = GREEN
+var draw_color
 
+var in_view = false
 var detecting = false
+var detection_counter = 0
 var flash_counter = 0
 
 # We aren't using the node's collision mask because
@@ -26,6 +29,12 @@ const VISION_CONE_COLLISION_MASK = 8
 signal alerted
 
 func _ready():
+	
+	if leniency == 0:
+		draw_color = YELLOW
+	else:
+		draw_color = GREEN
+	
 	var _ret
 	# Connect the alert across scenes so the player knows what's up
 	for player in get_tree().get_nodes_in_group("player"):
@@ -67,37 +76,59 @@ func _process(delta):
 		if flash_counter >= flash_frequency:
 			flash_counter = 0
 			if draw_color == RED:
-				draw_color = YELLOW
+				draw_color = CLEAR
 			else:
 				draw_color = RED
 	else:
-		draw_color = GREEN
+		if leniency == 0:
+			draw_color = YELLOW
+		else:
+			draw_color = GREEN
+	
+	if detecting:
+		
+		detection_counter += delta
+		if detection_counter >= leniency:
+			handle_alert()
+		
+	elif detection_counter > 0:
+		detection_counter -= delta
+	
+	if detection_counter < 0:
+		detection_counter = 0
 	
 	update()
 
+func start_detecting():
+	if $AlertCooldownTimer.is_stopped() and $DisableTimer.is_stopped():
+		detecting = true
+
+func stop_detecting():
+	detecting = false
+
 func handle_alert():
-	if $DisableTimer.is_stopped():
-		draw_color = RED
-		$AlertCooldownTimer.start()
-		emit_signal("alerted")
+	draw_color = RED
+	$AlertCooldownTimer.start()
+	emit_signal("alerted")
+	detecting = false
 
 func _on_VisionCone_body_entered(body):
 	if body.is_in_group("player"):
-		detecting = true
-		if $AlertCooldownTimer.is_stopped():
-			handle_alert()
-
-func _on_AlertCooldownTimer_timeout():
-	flash_counter = 0
-	if detecting:
-		handle_alert()
-
-func _on_DisableTimer_timeout():
-	flash_counter = 0
+		in_view = true
+		start_detecting()
 
 func _on_VisionCone_body_exited(body):
 	if body.is_in_group("player"):
-		detecting = false
+		in_view = false
+		stop_detecting()
+
+func _on_AlertCooldownTimer_timeout():
+	flash_counter = 0
+	if in_view:
+		start_detecting()
+
+func _on_DisableTimer_timeout():
+	flash_counter = 0
 
 func get_occluded_points(points_arc):
 	var space_state = get_world_2d().direct_space_state
@@ -142,6 +173,9 @@ func draw_computed_polygon(color):
 
 func _draw():
 	draw_computed_polygon(draw_color)
+	if detecting and leniency > 0:
+		var opacity = detection_counter / leniency
+		draw_computed_polygon(Color(1, 0, 0, opacity * 0.6))
 
 func zapped():
 	if $DisableTimer.is_stopped():
