@@ -9,6 +9,8 @@ var levels = [
 
 onready var item_list = $VBoxContainer/MarginContainer/HBoxContainer/ItemList
 
+
+
 func _ready():
 	var levels_unlocked = Global.game_state["levels_unlocked"]
 	var min_level = int(min(levels_unlocked, len(levels)))
@@ -23,6 +25,12 @@ func _ready():
 	
 	Global.save_game()
 	
+	var player = get_node("/root/MusicPlayer")
+	player.play_titlescreen_bgm()
+	
+func _exit_tree():
+	var player = get_node("/root/MusicPlayer")
+	player.play_level_bgm()
 
 func _on_ItemList_item_selected(index):
 	Global.current_level = index

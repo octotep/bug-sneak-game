@@ -188,6 +188,9 @@ func _on_alerted():
 			if alert.get_index() < current_alerts:
 				alert.frame = 1
 		
+	var player = get_node("/root/MusicPlayer")
+	player.play_alert_bgm()
+	
 	if current_alerts >= max_alerts:
 		emit_signal("game_over")
 
