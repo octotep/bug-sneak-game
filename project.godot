@@ -23,12 +23,18 @@ MusicPlayer="*res://MusicPlayer.tscn"
 
 window/size/width=960
 window/size/height=540
+window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
 [global]
 
 stretch=false
+dpi=true
+
+[gui]
+
+theme/use_hidpi=true
 
 [importer_defaults]
 
