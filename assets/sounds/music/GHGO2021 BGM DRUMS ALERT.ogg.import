@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GHGO2021 BGM DRUMS ALERT.ogg-02770785e402c904e43ef6a95b5cdab7.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/GHGO2021 BGM DRUMS ALERT.ogg"
+dest_files=[ "res://.import/GHGO2021 BGM DRUMS ALERT.ogg-02770785e402c904e43ef6a95b5cdab7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

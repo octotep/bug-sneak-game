@@ -3,9 +3,9 @@ extends Node
 onready var fore_player = $Foreground
 onready var back_player = $Background
 
-var _title_bgm = preload("res://assets/sounds/music/GHGO2021 TITLE redux.wav")
-var _level_bgm = preload("res://assets/sounds/music/GHGO2021 BGM redux.wav")
-var _alert_bgm = preload("res://assets/sounds/music/GHGO2021 BGM DRUMS ALERT.wav")
+var _title_bgm = preload("res://assets/sounds/music/GHGO2021 TITLE redux.ogg")
+var _level_bgm = preload("res://assets/sounds/music/GHGO2021 BGM redux.ogg")
+var _alert_bgm = preload("res://assets/sounds/music/GHGO2021 BGM DRUMS ALERT.ogg")
 
 func _ready():
 	fore_player.stream = _title_bgm
