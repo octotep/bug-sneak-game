@@ -84,8 +84,8 @@ __meta__ = {
 }
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 960.0
+margin_bottom = 540.0
 color = Color( 0, 0, 0, 0.823529 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -144,14 +144,14 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/MarginContainer"]
 margin_right = 405.0
-margin_bottom = 500.0
+margin_bottom = 440.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="MenuLayer/MarginContainer/VBoxContainer"]
 margin_right = 405.0
-margin_bottom = 363.0
+margin_bottom = 303.0
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
 text = "Bug Sneak Game"
@@ -159,9 +159,9 @@ align = 1
 
 [node name="Buttons" type="VBoxContainer" parent="MenuLayer/MarginContainer/VBoxContainer"]
 margin_left = 146.0
-margin_top = 367.0
+margin_top = 307.0
 margin_right = 259.0
-margin_bottom = 500.0
+margin_bottom = 440.0
 size_flags_horizontal = 4
 custom_constants/separation = 20
 __meta__ = {
