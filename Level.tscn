@@ -97,8 +97,5 @@ visible = false
 [node name="SignOverlay" parent="InterfaceLayer" instance=ExtResource( 9 )]
 visible = false
 
-[connection signal="body_entered" from="Background/Sign" to="." method="_on_Sign_body_entered"]
-[connection signal="body_entered" from="Background/Sign2" to="." method="_on_Sign_body_entered"]
-
 [editable path="Background/Player"]
 [editable path="InterfaceLayer/PauseScreen"]
