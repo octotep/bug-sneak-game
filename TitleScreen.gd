@@ -5,12 +5,14 @@ onready var _quit_button = $MenuLayer/MarginContainer/VBoxContainer/Buttons/Quit
 
 var Bar = preload ("res://TitleScreenBar.tscn")
 
-
 func _init():
 	OS.min_window_size = OS.window_size
 	
 func _ready():
 	Global.load_game()
+	
+	var player = get_node("/root/MusicPlayer")
+	player.play_titlescreen_bgm()
 	
 	if (OS.get_name() == 'HTML5'):
 		_quit_button.visible = false
