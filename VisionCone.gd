@@ -76,7 +76,7 @@ func _process(delta):
 		if flash_counter >= flash_frequency:
 			flash_counter = 0
 			if draw_color == RED:
-				draw_color = YELLOW
+				draw_color = CLEAR
 			else:
 				draw_color = RED
 	else:
