@@ -14,6 +14,8 @@ var _game_over_menu
 var _win_menu
 var _sign_overlay
 
+var _player
+
 func _init():
 	OS.min_window_size = OS.window_size
 
@@ -34,9 +36,10 @@ func _ready():
 	ui_canvas.add_child(_sign_overlay)
 	
 	# Connect the alert across scenes so the player knows what's up
-	var _ret = $Background/Player.connect("game_over", self, "_game_over")
-	_ret = $Background/Player.connect("win", self, "_win")
-	_ret = $Background/Player.connect("open_sign", self, "_open_sign")
+	_player = get_tree().get_nodes_in_group("player")[0]
+	var _ret = _player.connect("game_over", self, "_game_over")
+	_ret = _player.connect("win", self, "_win")
+	_ret = _player.connect("open_sign", self, "_open_sign")
 
 func _unhandled_input(event):
 	# The GlobalControls node, in the Stage scene, is set to process even
@@ -59,7 +62,7 @@ func _game_over():
 func _win():
 	Global.beat_level()
 	get_tree().paused = true
-	$Background/Player.visible = false
+	_player.visible = false
 	_win_menu.open()
 	
 func _open_sign(input_text):

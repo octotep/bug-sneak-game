@@ -22,6 +22,7 @@ func open(input_text):
 	text_area.show()
 	close_button.grab_focus()
 	
+
 func close():
 	get_tree().paused = false
 	close_button.release_focus()
@@ -32,6 +33,7 @@ func close():
 func _process(delta):
 	if Input.is_action_just_pressed("toggle_pause"):
 		close()
+
 
 func _on_Close_pressed():
 	close()
