@@ -82,35 +82,6 @@ drive_speed = 50
 [node name="Player" parent="Background" instance=ExtResource( 27 )]
 position = Vector2( 70.3447, 493.815 )
 
-[node name="VBoxContainer" parent="Background/Player/UI/MarginContainer" index="0"]
-margin_right = 912.0
-margin_bottom = 513.0
-
-[node name="HBoxContainer" parent="Background/Player/UI/MarginContainer/VBoxContainer" index="0"]
-margin_right = 912.0
-margin_bottom = 309.0
-
-[node name="Control2" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 858.0
-margin_bottom = 309.0
-
-[node name="Control" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 862.0
-margin_right = 912.0
-margin_bottom = 309.0
-
-[node name="HBoxContainer2" parent="Background/Player/UI/MarginContainer/VBoxContainer" index="1"]
-margin_top = 313.0
-margin_right = 912.0
-margin_bottom = 513.0
-
-[node name="HBoxContainer" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
-margin_right = 808.0
-
-[node name="VBoxContainer" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
-margin_left = 812.0
-margin_right = 912.0
-
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 100
 
