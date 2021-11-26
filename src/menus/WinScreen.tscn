@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/kenney_mini_square.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://GameOverScreen.gd" type="Script" id=2]
+[ext_resource path="res://src/menus/WinScreen.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -40,10 +40,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
-margin_left = 228.0
-margin_top = 205.0
-margin_right = 796.0
-margin_bottom = 395.0
+margin_left = 196.0
+margin_top = 175.0
+margin_right = 764.0
+margin_bottom = 365.0
 custom_constants/separation = 6
 alignment = 1
 

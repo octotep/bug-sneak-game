@@ -8,7 +8,7 @@ func _ready():
 
 func _on_Cutscene_animation_finished(_anim_name):
 	Global.game_state["levels_unlocked"] = 1
-	var _ret = get_tree().change_scene("res://LevelSelect.tscn")
+	var _ret = get_tree().change_scene("res://src/menus/LevelSelect.tscn")
 
 func _unhandled_input(event):
 	# The GlobalControls node, in the Stage scene, is set to process even
@@ -27,4 +27,4 @@ func _unhandled_input(event):
 
 func _on_PauseScreen_skip_intro():
 	Global.game_state["levels_unlocked"] = 1
-	var _ret = get_tree().change_scene("res://LevelSelect.tscn")
+	var _ret = get_tree().change_scene("res://src/menus/LevelSelect.tscn")

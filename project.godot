@@ -11,13 +11,13 @@ config_version=4
 [application]
 
 config/name="Bug Sneak Game"
-run/main_scene="res://TitleScreen.tscn"
+run/main_scene="res://src/menus/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://global.gd"
-MusicPlayer="*res://MusicPlayer.tscn"
+Global="*res://src/singletons/global.gd"
+MusicPlayer="*res://src/singletons/MusicPlayer.tscn"
 
 [display]
 

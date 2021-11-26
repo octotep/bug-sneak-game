@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://mall_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://PauseScreen.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Level.gd" type="Script" id=3]
-[ext_resource path="res://Door.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sentry.tscn" type="PackedScene" id=5]
-[ext_resource path="res://GameOverScreen.tscn" type="PackedScene" id=6]
-[ext_resource path="res://WinScreen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Sign.tscn" type="PackedScene" id=8]
-[ext_resource path="res://SignOverlay.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=27]
-[ext_resource path="res://Camera.tscn" type="PackedScene" id=28]
+[ext_resource path="res://src/levels/mall_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://src/menus/PauseScreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/levels/Level.gd" type="Script" id=3]
+[ext_resource path="res://src/entities/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/entities/Sentry.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/menus/GameOverScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/menus/WinScreen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/entities/Sign.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/menus/SignOverlay.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/entities/Player.tscn" type="PackedScene" id=27]
+[ext_resource path="res://src/entities/Camera.tscn" type="PackedScene" id=28]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -33,11 +33,11 @@ position = Vector2( 283.829, 543.967 )
 
 [node name="Sign" parent="Background" instance=ExtResource( 8 )]
 position = Vector2( 386.546, 543.005 )
-sign_text = "Testing this is a test"
+sign_text = "This is a test"
 
 [node name="Sign2" parent="Background" instance=ExtResource( 8 )]
 position = Vector2( 446.959, 543.005 )
-sign_text = "Did you know that the critically acclaimed MMORPG Final Fantasy XIV has a free trial, and includes the entirety of A Realm Reborn AND the award-winning Heavensward expansion up to level 60 with no restrictions on playtime?\\n\\nSign up, and enjoy Eorzea today!"
+sign_text = "Why did Godot ruin this beautiful rant when I moved it? Sad. Sign up and enjoy Eoerza today."
 
 [node name="decorations" type="TileMap" parent="Background"]
 tile_set = ExtResource( 1 )
@@ -116,12 +116,6 @@ layer = 100
 
 [node name="PauseScreen" parent="InterfaceLayer" instance=ExtResource( 2 )]
 visible = false
-
-[node name="VBoxContainer" parent="InterfaceLayer/PauseScreen/ColorRect/CenterContainer" index="0"]
-margin_left = 268.0
-margin_top = 175.0
-margin_right = 692.0
-margin_bottom = 365.0
 
 [node name="GameOverScreen" parent="InterfaceLayer" instance=ExtResource( 6 )]
 visible = false

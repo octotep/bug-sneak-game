@@ -3,7 +3,7 @@ extends MarginContainer
 onready var _continue_button = $MenuLayer/MarginContainer/VBoxContainer/Buttons/Continue
 onready var _quit_button = $MenuLayer/MarginContainer/VBoxContainer/Buttons/Quit
 
-var Bar = preload ("res://TitleScreenBar.tscn")
+var Bar = preload ("res://src/menus/TitleScreenBar.tscn")
 
 func _init():
 	OS.min_window_size = OS.window_size
@@ -37,7 +37,7 @@ func _on_BarTimer_timeout():
 	add_child(e)
 	
 func _on_NewGame_pressed():
-	var _ret = get_tree().change_scene("res://Intro.tscn")
+	var _ret = get_tree().change_scene("res://src/cutscenes/intro/Intro.tscn")
 
 func _on_Quit_pressed():
 	get_tree().get_root().notification(NOTIFICATION_WM_QUIT_REQUEST)
@@ -45,4 +45,4 @@ func _on_Quit_pressed():
 
 
 func _on_Continue_pressed():
-	var _ret = get_tree().change_scene("res://LevelSelect.tscn")
+	var _ret = get_tree().change_scene("res://src/menus/LevelSelect.tscn")

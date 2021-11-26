@@ -1,11 +1,11 @@
 [gd_scene load_steps=48 format=2]
 
-[ext_resource path="res://Intro.gd" type="Script" id=1]
+[ext_resource path="res://src/cutscenes/intro/Intro.gd" type="Script" id=1]
 [ext_resource path="res://assets/opening/cockroach.png" type="Texture" id=2]
 [ext_resource path="res://assets/opening/opening cutscene.png" type="Texture" id=3]
 [ext_resource path="res://assets/opening/textbox.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/kenney_mini_square.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://Intro.tres" type="TileSet" id=6]
+[ext_resource path="res://src/cutscenes/intro/Intro.tres" type="TileSet" id=6]
 [ext_resource path="res://assets/opening/roach/cockroach_sprite.png" type="Texture" id=7]
 [ext_resource path="res://assets/player/idle/6.png" type="Texture" id=8]
 [ext_resource path="res://assets/player/idle/5.png" type="Texture" id=9]
@@ -24,7 +24,7 @@
 [ext_resource path="res://assets/player/run/7.png" type="Texture" id=22]
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight12.png" type="Texture" id=23]
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark12.png" type="Texture" id=24]
-[ext_resource path="res://IntroPauseScreen.gd" type="Script" id=25]
+[ext_resource path="res://src/menus/IntroPauseScreen.gd" type="Script" id=25]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -851,10 +851,10 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="BugScene/CenterContainer"]
 visible = false
-margin_left = 152.0
-margin_top = 90.0
-margin_right = 872.0
-margin_bottom = 510.0
+margin_left = 120.0
+margin_top = 60.0
+margin_right = 840.0
+margin_bottom = 480.0
 texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1014,23 +1014,23 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
-margin_right = 974.0
-margin_bottom = 550.0
+margin_right = 910.0
+margin_bottom = 490.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
-margin_right = 974.0
-margin_bottom = 550.0
+margin_right = 910.0
+margin_bottom = 490.0
 size_flags_vertical = 3
 
 [node name="Control2" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 920.0
-margin_bottom = 550.0
+margin_right = 856.0
+margin_bottom = 490.0
 size_flags_horizontal = 3
 
 [node name="Control" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 924.0
-margin_right = 974.0
-margin_bottom = 550.0
+margin_left = 860.0
+margin_right = 910.0
+margin_bottom = 490.0
 rect_min_size = Vector2( 50, 100 )
 size_flags_vertical = 3
 __meta__ = {
@@ -1069,10 +1069,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseScreen/ColorRect/CenterContainer"]
-margin_left = 300.0
-margin_top = 205.0
-margin_right = 724.0
-margin_bottom = 395.0
+margin_left = 268.0
+margin_top = 175.0
+margin_right = 692.0
+margin_bottom = 365.0
 custom_constants/separation = 6
 alignment = 1
 
