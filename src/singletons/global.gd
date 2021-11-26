@@ -28,3 +28,4 @@ func load_game():
 func beat_level():
 	if (current_level + 1) == game_state["levels_unlocked"]:
 		game_state["levels_unlocked"] += 1
+	save_game()
