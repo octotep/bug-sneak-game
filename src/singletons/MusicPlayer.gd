@@ -29,6 +29,8 @@ func play_level_bgm():
 	fore_player.play()
 
 func play_alert_bgm():
+	$Background/Tween.stop_all()
+	
 	sfx_player.volume_db = 0.0
 	sfx_player.play()
 	
