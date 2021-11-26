@@ -195,6 +195,13 @@ func _on_alerted():
 		player.play_alert_bgm()
 
 
+func set_camera_extents(left, right, top, bottom):
+	$Camera2D.limit_left = left
+	$Camera2D.limit_right = right
+	$Camera2D.limit_top = top
+	$Camera2D.limit_bottom = bottom
+
+
 func _approached_door():
 	in_door = true
 	$AnimatedSprite/EnterDoorSprite.visible = true
