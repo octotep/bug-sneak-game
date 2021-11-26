@@ -1,14 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/levels/mall_tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://src/menus/ingame/PauseScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=3]
 [ext_resource path="res://src/entities/Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/entities/Sentry.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/menus/ingame/GameOverScreen.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/menus/ingame/WinScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/entities/Sign.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/menus/ingame/SignOverlay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/entities/Player.tscn" type="PackedScene" id=27]
 [ext_resource path="res://src/entities/Camera.tscn" type="PackedScene" id=28]
 
@@ -82,20 +78,17 @@ drive_speed = 50
 [node name="Player" parent="Background" instance=ExtResource( 27 )]
 position = Vector2( 70.3447, 493.815 )
 
-[node name="InterfaceLayer" type="CanvasLayer" parent="."]
-layer = 100
+[node name="HBoxContainer" parent="Background/Player/UI/MarginContainer/VBoxContainer" index="0"]
+margin_bottom = 305.0
 
-[node name="PauseScreen" parent="InterfaceLayer" instance=ExtResource( 2 )]
-visible = false
+[node name="Control2" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 854.0
+margin_bottom = 305.0
 
-[node name="GameOverScreen" parent="InterfaceLayer" instance=ExtResource( 6 )]
-visible = false
+[node name="Control" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+margin_bottom = 305.0
 
-[node name="WinScreen" parent="InterfaceLayer" instance=ExtResource( 7 )]
-visible = false
-
-[node name="SignOverlay" parent="InterfaceLayer" instance=ExtResource( 9 )]
-visible = false
+[node name="HBoxContainer" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
+margin_right = 804.0
 
 [editable path="Background/Player"]
-[editable path="InterfaceLayer/PauseScreen"]
