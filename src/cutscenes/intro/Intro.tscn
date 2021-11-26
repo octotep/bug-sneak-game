@@ -24,7 +24,7 @@
 [ext_resource path="res://assets/player/run/7.png" type="Texture" id=22]
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentLight/transparentLight12.png" type="Texture" id=23]
 [ext_resource path="res://assets/onscreencontrols/Sprites/transparentDark/transparentDark12.png" type="Texture" id=24]
-[ext_resource path="res://src/menus/IntroPauseScreen.gd" type="Script" id=25]
+[ext_resource path="res://src/menus/ingame/IntroPauseScreen.gd" type="Script" id=25]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
