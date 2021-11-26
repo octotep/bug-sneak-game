@@ -143,24 +143,24 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuLayer/MarginContainer"]
-margin_right = 405.0
+margin_right = 386.0
 margin_bottom = 440.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="MenuLayer/MarginContainer/VBoxContainer"]
-margin_right = 405.0
+margin_right = 386.0
 margin_bottom = 281.0
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 1 )
-text = "Bug Sneak Game"
+text = "Sneaky Crawly"
 align = 1
 
 [node name="Buttons" type="VBoxContainer" parent="MenuLayer/MarginContainer/VBoxContainer"]
-margin_left = 140.0
+margin_left = 130.0
 margin_top = 289.0
-margin_right = 265.0
+margin_right = 255.0
 margin_bottom = 440.0
 size_flags_horizontal = 4
 custom_constants/separation = 20
@@ -169,8 +169,9 @@ __meta__ = {
 }
 
 [node name="NewGame" type="Button" parent="MenuLayer/MarginContainer/VBoxContainer/Buttons"]
-margin_right = 124.0
+margin_right = 125.0
 margin_bottom = 37.0
+rect_min_size = Vector2( 125, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 3 )
@@ -178,9 +179,9 @@ text = "New Game"
 
 [node name="Continue" type="Button" parent="MenuLayer/MarginContainer/VBoxContainer/Buttons"]
 margin_top = 57.0
-margin_right = 118.0
+margin_right = 125.0
 margin_bottom = 94.0
-rect_min_size = Vector2( 111, 0 )
+rect_min_size = Vector2( 125, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 5 )

@@ -4,15 +4,35 @@ extends Node2D
 
 # The "_" prefix is a convention to indicate that variables are private,
 # that is to say, another node or script should not access them.
-onready var _pause_menu = $InterfaceLayer/PauseScreen
-onready var _game_over_menu = $InterfaceLayer/GameOverScreen
-onready var _win_menu = $InterfaceLayer/WinScreen
-onready var _sign_overlay = $InterfaceLayer/SignOverlay
+var _pause_menu_scene = preload("res://src/menus/ingame/PauseScreen.tscn")
+var _game_over_scene = preload("res://src/menus/ingame/GameOverScreen.tscn")
+var _win_scene = preload("res://src/menus/ingame/WinScreen.tscn")
+var _sign_overlay_scene = preload("res://src/menus/ingame/SignOverlay.tscn")
+
+var _pause_menu
+var _game_over_menu
+var _win_menu
+var _sign_overlay
 
 func _init():
 	OS.min_window_size = OS.window_size
 
 func _ready():
+	# Create a new ui canvas
+	var ui_canvas = CanvasLayer.new()
+	ui_canvas.layer = 100
+	self.add_child(ui_canvas)
+	
+	# Dynamically instantiate UI scenes into it
+	_pause_menu = _pause_menu_scene.instance()
+	ui_canvas.add_child(_pause_menu)
+	_game_over_menu = _game_over_scene.instance()
+	ui_canvas.add_child(_game_over_menu)
+	_win_menu = _win_scene.instance()
+	ui_canvas.add_child(_win_menu)
+	_sign_overlay = _sign_overlay_scene.instance()
+	ui_canvas.add_child(_sign_overlay)
+	
 	# Connect the alert across scenes so the player knows what's up
 	var _ret = $Background/Player.connect("game_over", self, "_game_over")
 	_ret = $Background/Player.connect("win", self, "_win")

@@ -6,11 +6,9 @@ onready var text_area = $ColorRect/Label
 onready var close_button = $ColorRect/Close
 
 onready var root = get_tree().get_root()
-onready var scene_root = root.get_child(root.get_child_count() - 1)
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	hide() # Replace with function body.
+	hide()
 
 func open(input_text):
 	show()
@@ -30,6 +28,10 @@ func close():
 	text_area.hide()
 	hide()
 
+
+func _process(delta):
+	if Input.is_action_just_pressed("toggle_pause"):
+		close()
 
 func _on_Close_pressed():
 	close()
