@@ -29,8 +29,9 @@ func play_level_bgm():
 	fore_player.play()
 
 func play_alert_bgm():
-	sfx_player.play()
 	sfx_player.volume_db = 0.0
+	sfx_player.play()
+	
 	# Too much lag when seeking then playing, we were like 3 seconds off. So here we play and then seek
 	# Derpy but incredibly effective
 	back_player.volume_db = -80.0
@@ -38,11 +39,11 @@ func play_alert_bgm():
 	back_player.seek(fore_player.get_playback_position())
 	back_player.volume_db = 0.0	
 	$Timer.start()
-
+	
 
 func _on_Timer_timeout():
-	$Background/Tween.interpolate_property(back_player, "volume_db", 0, -80, 5, 1, Tween.EASE_IN, 0)
-	$Background/Tween.interpolate_property(sfx_player, "volume_db", 0, -80, 5, 1, Tween.EASE_IN, 0)
+	$Background/Tween.interpolate_property(back_player, "volume_db", 0, -60, 5, 1, Tween.EASE_IN, 0)
+	$Background/Tween.interpolate_property(sfx_player, "volume_db", 0, -60, 5, 1, Tween.EASE_IN, 0)
 	$Background/Tween.start()
 
 
