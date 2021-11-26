@@ -11,11 +11,13 @@ pause_mode = 2
 [node name="Background" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
 
+[node name="Tween" type="Tween" parent="Background"]
+
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 
-[node name="Tween" type="Tween" parent="."]
+[node name="SFX" type="AudioStreamPlayer" parent="."]
 
+[connection signal="tween_completed" from="Background/Tween" to="." method="_on_Tween_tween_completed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
