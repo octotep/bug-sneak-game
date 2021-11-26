@@ -30,7 +30,7 @@ func close():
 	hide()
 
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("toggle_pause"):
 		close()
 
