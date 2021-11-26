@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/title screen bar.png" type="Texture" id=1]
-[ext_resource path="res://TitleScreenBar.gd" type="Script" id=2]
+[ext_resource path="res://src/menus/TitleScreenBar.gd" type="Script" id=2]
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 modulate = Color( 0.0392157, 0.282353, 0.596078, 0.741176 )
