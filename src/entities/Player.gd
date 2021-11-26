@@ -11,11 +11,14 @@ const ALERT_OFFSET = 80
 var _velocity = Vector2.ZERO
 var in_door = false
 var in_sign = false
+var in_switch = false
 var current_sign = null
+var current_switch = null
 
 signal game_over
 signal win
 signal open_sign(input_text)
+signal toggle_gate(switch_id)
 
 enum STATE {
 	IDLE,
@@ -53,6 +56,10 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor() and in_sign:
 		emit_signal("open_sign", current_sign.sign_text)
+		return
+		
+	if Input.is_action_just_pressed("jump") and is_on_floor() and in_switch:
+		emit_signal("toggle_gate", current_switch.switch_id)
 		return
 		
 	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
@@ -218,4 +225,14 @@ func _approached_sign(curr_sign):
 func _retreated_from_sign():
 	in_sign = false
 	current_sign = null
+	$AnimatedSprite/EnterDoorSprite.visible = false
+	
+func _approached_switch(curr_switch):
+	in_switch = true
+	current_switch = curr_switch
+	$AnimatedSprite/EnterDoorSprite.visible = true
+
+func _retreated_from_switch():
+	in_switch = false
+	current_switch = null
 	$AnimatedSprite/EnterDoorSprite.visible = false

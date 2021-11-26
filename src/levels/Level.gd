@@ -42,6 +42,7 @@ func _ready():
 	var _ret = _player.connect("game_over", self, "_game_over")
 	_ret = _player.connect("win", self, "_win")
 	_ret = _player.connect("open_sign", self, "_open_sign")
+	_ret = _player.connect("toggle_gate", self, "_toggle_gate")
 	
 	findTileMapRecursive(self, _tilemaps)
 	
@@ -66,6 +67,8 @@ func findTileMapRecursive(node, found_nodes):
 		found_nodes.append(node)
 	for child in node.get_children():
 		findTileMapRecursive(child, found_nodes)
+
+
 
 func _unhandled_input(event):
 	# The GlobalControls node, in the Stage scene, is set to process even
@@ -95,3 +98,17 @@ func _win():
 func _open_sign(input_text):
 	get_tree().paused = true
 	_sign_overlay.open(input_text)
+
+func _toggle_gate(switch_id):
+	for switch in get_tree().get_nodes_in_group("switch"):
+		if (switch_id == switch.switch_id):
+			switch.get_node("Sprite").frame = switch.get_node("Sprite").frame == 0
+			
+	for gate in get_tree().get_nodes_in_group("gate"):
+		if (switch_id == gate.gate_id):
+			if not gate.visible:
+				gate.get_node("CollisionShape2D").disabled = false
+				gate.visible = true
+			else:
+				gate.visible = false
+				gate.get_node("CollisionShape2D").disabled = true

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/levels/mall_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://src/entities/Gate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/levels/Level.gd" type="Script" id=3]
 [ext_resource path="res://src/entities/Door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/entities/Sentry.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/entities/Switch.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/entities/Sign.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/entities/Player.tscn" type="PackedScene" id=27]
 [ext_resource path="res://src/entities/Camera.tscn" type="PackedScene" id=28]
@@ -28,12 +30,37 @@ tile_data = PoolIntArray( 65535, 26, 0, 0, 12, 0, 1, 12, 0, 2, 12, 0, 3, 12, 0, 
 position = Vector2( 283.829, 543.967 )
 
 [node name="Sign" parent="Background" instance=ExtResource( 8 )]
-position = Vector2( 386.546, 543.005 )
+position = Vector2( 32, 543 )
 sign_text = "This is a test"
 
 [node name="Sign2" parent="Background" instance=ExtResource( 8 )]
 position = Vector2( 446.959, 543.005 )
 sign_text = "Why did Godot ruin this beautiful rant when I moved it? Sad. Sign up and enjoy Eoerza today."
+
+[node name="Switch" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
+position = Vector2( 706, 257 )
+collision_layer = 4
+switch_id = 1
+
+[node name="Switch2" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
+position = Vector2( 400, 257 )
+collision_layer = 4
+switch_id = 2
+
+[node name="Gate" parent="Background" groups=["gate"] instance=ExtResource( 2 )]
+position = Vector2( 623, 239 )
+collision_layer = 8
+gate_id = 1
+
+[node name="Gate2" parent="Background" groups=["gate"] instance=ExtResource( 2 )]
+position = Vector2( 464, 239 )
+collision_layer = 8
+gate_id = 1
+
+[node name="Gate3" parent="Background" groups=["gate"] instance=ExtResource( 2 )]
+position = Vector2( 300, 239 )
+collision_layer = 8
+gate_id = 2
 
 [node name="decorations" type="TileMap" parent="Background"]
 tile_set = ExtResource( 1 )
@@ -78,17 +105,7 @@ drive_speed = 50
 [node name="Player" parent="Background" instance=ExtResource( 27 )]
 position = Vector2( 70.3447, 493.815 )
 
-[node name="HBoxContainer" parent="Background/Player/UI/MarginContainer/VBoxContainer" index="0"]
-margin_bottom = 305.0
-
-[node name="Control2" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 854.0
-margin_bottom = 305.0
-
-[node name="Control" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-margin_bottom = 305.0
-
-[node name="HBoxContainer" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
-margin_right = 804.0
+[node name="MarginContainer" parent="Background/Player/UI" index="0"]
+visible = false
 
 [editable path="Background/Player"]

@@ -661,12 +661,12 @@ margin_bottom = 513.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
 margin_right = 912.0
-margin_bottom = 309.0
+margin_bottom = 305.0
 size_flags_vertical = 3
 
 [node name="Control2" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 858.0
-margin_bottom = 309.0
+margin_right = 854.0
+margin_bottom = 305.0
 size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Control2"]
@@ -704,7 +704,7 @@ frame = 1
 [node name="Control" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 862.0
 margin_right = 912.0
-margin_bottom = 309.0
+margin_bottom = 305.0
 rect_min_size = Vector2( 50, 100 )
 size_flags_vertical = 3
 __meta__ = {
@@ -726,7 +726,7 @@ size_flags_horizontal = 9
 size_flags_vertical = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_right = 808.0
+margin_right = 804.0
 margin_bottom = 200.0
 size_flags_horizontal = 7
 size_flags_vertical = 5
