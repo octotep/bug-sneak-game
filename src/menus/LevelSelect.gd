@@ -3,7 +3,11 @@ extends MarginContainer
 var levels = [
 	{
 		"text": "Learning the Basics",
-		"path": "res://src/levels/Level.tscn"
+		"path": "res://src/levels/FirstLevel.tscn"
+	},
+	{
+		"text": "Moving Along",
+		"path": "res://src/levels/SecondLevel.tscn"
 	},
 ]
 
