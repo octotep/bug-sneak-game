@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns='http://www.w3.org/1999/xhtml' lang='' xml:lang=''>
+<html xmlns='https://www.w3.org/1999/xhtml' lang='' xml:lang=''>
 <head>
 	<meta charset='utf-8' />
 	<meta name='viewport' content='width=device-width, user-scalable=no' />
@@ -110,12 +110,64 @@
 			padding: 4px 6px;
 			visibility: visible;
 		}
+
+        #block_land {
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            background-color: white;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center; /* align horizontal */
+            align-items: center; /* align vertical */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            #block_land {
+                background-color: black;
+                color: white;
+            }
+        }
+
+        @media screen and (orientation: portrait) {
+            #block_land {
+                display: flex !important;
+            }
+
+            #canvas {
+                display: none !important;
+            }
+
+            #status {
+                display: none !important;
+            }
+        }
+
+        @media screen and (orientation: landscape) {
+            #block_land {
+                display: none !important;
+            }
+
+            #canvas {
+                display: block !important;
+            }
+
+            #status {
+                display: block !important;
+            }
+        }
+
 	</style>
 <link id='-gd-engine-icon' rel='icon' type='image/png' href='index.icon.png' />
 <link rel='apple-touch-icon' href='index.apple-touch-icon.png'/>
+<link rel='manifest' href='index.manifest.json'>
+<script type='application/javascript'>window.addEventListener('load', () => {if ('serviceWorker' in navigator) {navigator.serviceWorker.register('index.service.worker.js');}});</script>
 
 </head>
 <body>
+    <div id="block_land">You can only play this game in landscape. Please rotate your device.</div>
 	<canvas id='canvas'>
 		HTML5 canvas appears to be unsupported in the current browser.<br />
 		Please try updating or use a different browser.
@@ -138,7 +190,7 @@
 	<script type='text/javascript' src='index.js'></script>
 	<script type='text/javascript'>//<![CDATA[
 
-		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":650432,"index.wasm":13328615},"focusCanvas":true,"gdnativeLibs":[]};
+		const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":9408960,"index.wasm":13328615},"focusCanvas":true,"gdnativeLibs":[]};
 		var engine = new Engine(GODOT_CONFIG);
 
 		(function() {
