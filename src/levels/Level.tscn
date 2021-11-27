@@ -105,7 +105,7 @@ drive_speed = 50
 [node name="Player" parent="Background" instance=ExtResource( 27 )]
 position = Vector2( 70.3447, 493.815 )
 
-[node name="MarginContainer" parent="Background/Player/UI" index="0"]
-visible = false
+[node name="Label2" parent="Background/Player/UI/MarginContainer/VBoxContainer/HBoxContainer/Control2" index="1"]
+visible = true
 
 [editable path="Background/Player"]
