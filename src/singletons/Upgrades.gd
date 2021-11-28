@@ -1,4 +1,4 @@
 extends Node
 
-var has_zapper = false
-var has_more_alerts = false
+export var has_zapper = false
+export var has_more_alerts = false

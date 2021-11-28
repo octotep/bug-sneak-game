@@ -27,9 +27,10 @@ extents = Vector2( 4.96623, 11.8527 )
 collision_layer = 16
 collision_mask = 0
 script = ExtResource( 3 )
+max_angle = 360
 
 [node name="VisionCone" parent="." instance=ExtResource( 4 )]
-leniency = 0
+leniency = 0.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1, 0 )

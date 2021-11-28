@@ -4,7 +4,7 @@ extends Area2D
 export var detect_radius = 150
 export var field_of_view = 40
 export var flash_frequency = 0.3
-export var leniency = 1
+export var leniency = 0.65
 
 export(GDScript) var movement_script
 
