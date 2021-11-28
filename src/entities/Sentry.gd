@@ -11,6 +11,8 @@ enum DIR {
 
 var direction = DIR.FORWARDS
 
+var has_cone = true
+
 func _ready():
 	# We do the looping logic ourselves so we can wait inbetween ends
 	path_follow.set_loop(false)

@@ -6,6 +6,8 @@ export var scan_speed = 0.15
 
 var scan_direction = 1
 
+var has_cone = true
+
 func _process(_delta):
 	
 	var new_angle = rotation_degrees + (scan_speed * scan_direction)

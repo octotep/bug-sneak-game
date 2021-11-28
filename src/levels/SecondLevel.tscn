@@ -8,7 +8,7 @@
 [ext_resource path="res://src/entities/Camera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/entities/SentryWithPath.tscn" type="PackedScene" id=7]
 
-[node name="Sec ondLevel" type="Node2D"]
+[node name="SecondLevel" type="Node2D"]
 script = ExtResource( 3 )
 
 [node name="background" type="TileMap" parent="."]
@@ -54,6 +54,9 @@ tile_data = PoolIntArray( 524320, 21, 0, 524321, 23, 0, 589853, 9, 0, 589854, 9,
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 113.839, 449.246 )
+
+[node name="Upgrades" parent="Player" index="7"]
+has_zapper = true
 
 [editable path="foreground/Camera2"]
 [editable path="foreground/Path2D"]
