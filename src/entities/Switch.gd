@@ -12,9 +12,11 @@ func _ready():
 		_ret = connect("retreated_from_switch", player, "_retreated_from_switch")
 
 
-func _on_Switch_body_entered(_body):
-	emit_signal("approached_switch", self)
+func _on_Switch_body_entered(body):
+	if body.is_in_group("player"):
+		emit_signal("approached_switch", self)
 
 
-func _on_Switch_body_exited(_body):
-	emit_signal("retreated_from_switch")
+func _on_Switch_body_exited(body):
+	if body.is_in_group("player"):
+		emit_signal("retreated_from_switch")

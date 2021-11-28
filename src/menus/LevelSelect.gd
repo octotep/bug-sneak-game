@@ -9,6 +9,10 @@ var levels = [
 		"text": "Moving Along",
 		"path": "res://src/levels/SecondLevel.tscn"
 	},
+	{
+		"text": "Blocked Off",
+		"path": "res://src/levels/ThirdLevel.tscn"
+	},
 ]
 
 onready var item_list = $VBoxContainer/MarginContainer/HBoxContainer/ItemList

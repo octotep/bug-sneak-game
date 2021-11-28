@@ -170,9 +170,6 @@ func _ready():
 			var x = (max_alerts - alert.get_index() - 1) * ALERT_OFFSET
 			alert.position = Vector2(x, 40)
 	
-	# TODO remove this - just for debug
-	$Upgrades.has_zapper = true
-	
 	# Fresh zaps
 	if $Upgrades.has_zapper == true:
 		num_zaps = max_zaps
