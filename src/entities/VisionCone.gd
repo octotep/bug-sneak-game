@@ -26,6 +26,8 @@ var flash_counter = 0
 # but we DON'T want the player to occlude the cone.
 const VISION_CONE_COLLISION_MASK = 8
 
+var occlusion_exclusions = []
+
 signal alerted
 
 func _ready():
@@ -43,6 +45,18 @@ func _ready():
 	# This allows for custom cone movement.
 	# Default is static, though it inherits its parents' transforms.
 	$VisionConeMovement.set_script(movement_script)
+	
+	# Because we can't know for certain what the tree looks like above the cone,
+	# we instead just throw a `has_cone` variable into the actual owner.
+	# This allows us to ignore any potential container Node2Ds or whatever else,
+	# and exclude JUST the node that matters.
+	var parent_node = self
+	while not parent_node == null:
+		if "has_cone" in parent_node:
+			break
+		parent_node = parent_node.get_parent()
+	if not parent_node == null:
+		occlusion_exclusions = [parent_node]
 
 func _physics_process(_delta):
 	
@@ -53,6 +67,7 @@ func _physics_process(_delta):
 		rotation_degrees - field_of_view / 2,
 		rotation_degrees + field_of_view / 2
 	)
+	
 	var occluded_polygon = get_occluded_points(polygon)
 	$VisionConePolygon.polygon = occluded_polygon
 
@@ -144,7 +159,7 @@ func get_occluded_points(points_arc):
 		var intersect_result = space_state.intersect_ray(
 			to_global(center),
 			to_global(point),
-			[],
+			occlusion_exclusions,
 			VISION_CONE_COLLISION_MASK
 		)
 		
@@ -157,7 +172,7 @@ func get_occluded_points(points_arc):
 	return points_arc
 
 func get_shape_points(center, radius, angle_from, angle_to):
-	var nb_points = 64
+	var nb_points = 48
 	var points_arc = PoolVector2Array()
 	points_arc.append(center)
 	
@@ -172,10 +187,10 @@ func draw_computed_polygon(color):
 	draw_polygon($VisionConePolygon.polygon, colors)
 
 func _draw():
-	draw_computed_polygon(draw_color)
-	if detecting and leniency > 0:
+	if leniency > 0 and $AlertCooldownTimer.is_stopped():
 		var opacity = detection_counter / leniency
-		draw_computed_polygon(Color(1, 0, 0, opacity * 0.6))
+		draw_color = draw_color.blend(Color(1, 0, 0, opacity))
+	draw_computed_polygon(draw_color)
 
 func zapped():
 	if $DisableTimer.is_stopped():
