@@ -205,8 +205,5 @@ wait_time = 0.8
 [node name="Player" parent="Background" instance=ExtResource( 27 )]
 position = Vector2( 624, 232 )
 
-[node name="Upgrades" parent="Background/Player" index="7"]
-has_zapper = true
-
 [editable path="Background/Path2D/PathFollow2D/Sentry"]
 [editable path="Background/Player"]
