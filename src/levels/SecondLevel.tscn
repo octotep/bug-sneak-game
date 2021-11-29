@@ -55,9 +55,6 @@ tile_data = PoolIntArray( 524320, 21, 0, 524321, 23, 0, 589853, 9, 0, 589854, 9,
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 113.839, 449.246 )
 
-[node name="Upgrades" parent="Player" index="7"]
-has_zapper = true
-
 [editable path="foreground/Camera2"]
 [editable path="foreground/Path2D"]
 [editable path="foreground/Path2D2"]

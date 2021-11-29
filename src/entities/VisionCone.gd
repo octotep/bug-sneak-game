@@ -68,8 +68,9 @@ func _physics_process(_delta):
 		rotation_degrees + field_of_view / 2
 	)
 	
-	var occluded_polygon = get_occluded_points(polygon)
-	$VisionConePolygon.polygon = occluded_polygon
+	if $VisibilityNotifier2D.is_on_screen():
+		polygon = get_occluded_points(polygon)
+	$VisionConePolygon.polygon = polygon
 
 func _process(delta):
 	
