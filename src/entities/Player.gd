@@ -50,19 +50,21 @@ func get_direction():
 
 func _physics_process(delta):
 	# Did we just win? Nice
-	if Input.is_action_just_pressed("jump") and is_on_floor() and in_door:
+	if Input.is_action_just_pressed("down") and is_on_floor() and in_door:
 		emit_signal("win")
 		return
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor() and in_sign:
+	if Input.is_action_just_pressed("down") and is_on_floor() and in_sign:
 		emit_signal("open_sign", current_sign.sign_text)
 		return
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor() and in_switch:
+	if Input.is_action_just_pressed("down") and is_on_floor() and in_switch:
 		emit_signal("toggle_gate", current_switch.switch_id)
 		return
 		
-	var is_crouching = Input.is_action_pressed("down") and is_on_floor()
+	var is_crouching = Input.is_action_pressed("down") and is_on_floor() and not in_door and not in_sign and not in_switch
+	
+	print(is_crouching)
 
 	var speed = run_speed
 	if is_crouching:
