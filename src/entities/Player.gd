@@ -247,4 +247,4 @@ func _approached_charge(curr_charge):
 
 func _retreated_from_charge():
 	in_charge = false
-	current_switch = null
+	current_charge = null
