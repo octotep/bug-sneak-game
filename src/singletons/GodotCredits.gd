@@ -27,8 +27,7 @@ var credits = [
 		"Programming",
 		"Austin Decker",
 		"Dan Muckerman",
-		"Chris Yealy",
-		"The template for these credits by benbishopnz"
+		"Chris Yealy"
 	],[
 		"Art",
 		"Pixel Prototype Player by Dead Revolver",
@@ -42,11 +41,14 @@ var credits = [
 		"Footsteps from kenney.nl",
 		"Alarm sounds by Chris Yealy"
 	],[
+		"Other Resources",
+		"GodotCredits by benbishopnz"
+	],[
 		"Testers",
 		"What testers?"
 	],[
 		"Special thanks",
-		"Drew, for not helping"
+		"Drew, for not helping. Oh, and the name I guess."
 	]
 ]
 
