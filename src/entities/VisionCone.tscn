@@ -6,6 +6,7 @@
 [node name="VisionCone" type="Area2D"]
 collision_layer = 0
 script = ExtResource( 1 )
+leniency = 0.5
 movement_script = ExtResource( 2 )
 
 [node name="VisionConePolygon" type="CollisionPolygon2D" parent="."]
