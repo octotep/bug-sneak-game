@@ -9,7 +9,6 @@ func start_game():
 	Global.game_state = Global.base_game_state
 	Global.game_state["levels_unlocked"] = 1
 	Global.save_game()
-	Global.save_game()
 	get_tree().change_scene("res://src/menus/LevelSelect.tscn")
 
 func _on_Cutscene_animation_finished(_anim_name):
