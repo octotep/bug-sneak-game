@@ -69,7 +69,7 @@ script = ExtResource( 5 )
 
 [node name="Sign" parent="SignTextSwitcher" instance=ExtResource( 4 )]
 position = Vector2( 176, 240 )
-sign_text = "You've done it.\\nYou've figured out how to make the security systems go haywire.\\nHit a camera or a sentry with your zapper to upload a bug into their optic routines and render yourself completely invisible to their sensors.\\nUsing it once in any area of the mall will cause systems in that area to wise up and put up additional firewalls.\\nThis means you can only use it once per level."
+sign_text = "You've figured out the code to properly hide yourself.\\nHit a camera or a sentry with your zapper to upload a bug into their optic routines and render yourself completely invisible to their sensors.\\nBe warned: their genetic algorithms learn fast, so using it once in any area of the mall will harden the firewall in that area.\\nIn other words, you only get one use per level, unless you pick up an encryption hash to mask your activity. They're shaped like lightning bolts."
 
 [node name="Sign" parent="." instance=ExtResource( 4 )]
 position = Vector2( 544, 848 )
