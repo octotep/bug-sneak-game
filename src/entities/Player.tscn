@@ -634,6 +634,7 @@ visible = false
 position = Vector2( -0.72744, -17.8317 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 17 )
+flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.0340118, 28.2198 )
