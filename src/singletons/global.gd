@@ -7,15 +7,15 @@ var game_state = {
 var levels = [
 	{
 		"text": "Learning the Basics",
-		"path": "res://src/levels/FirstLevel.tscn"
+		"path": "res://src/levels/CameraIntro.tscn"
 	},
 	{
 		"text": "Moving Along",
-		"path": "res://src/levels/SecondLevel.tscn"
+		"path": "res://src/levels/SentryIntro.tscn"
 	},
 	{
 		"text": "Blocked Off",
-		"path": "res://src/levels/ThirdLevel.tscn"
+		"path": "res://src/levels/GateIntro.tscn"
 	},
 ]
 
