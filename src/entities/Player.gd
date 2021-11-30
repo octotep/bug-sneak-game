@@ -64,8 +64,6 @@ func _physics_process(delta):
 		
 	var is_crouching = Input.is_action_pressed("down") and is_on_floor() and not in_door and not in_sign and not in_switch
 	
-	print(is_crouching)
-
 	var speed = run_speed
 	if is_crouching:
 		speed = crawl_speed
