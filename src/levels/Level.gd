@@ -94,7 +94,7 @@ func _game_over():
 	_game_over_menu.open()
 	
 func _win():
-	Global.beat_level()
+	Global.beat_level(_player.current_alerts)
 	get_tree().paused = true
 	_player.visible = false
 	

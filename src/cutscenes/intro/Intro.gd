@@ -5,10 +5,15 @@ onready var _pause_menu = $UI/PauseScreen
 func _ready():
 	$Cutscene.play("Opening Cutscene")
 
+func start_game():
+	Global.game_state = Global.base_game_state
+	Global.game_state["levels_unlocked"] = 1
+	Global.save_game()
+	Global.save_game()
+	get_tree().change_scene("res://src/menus/LevelSelect.tscn")
 
 func _on_Cutscene_animation_finished(_anim_name):
-	Global.game_state["levels_unlocked"] = 1
-	var _ret = get_tree().change_scene("res://src/menus/LevelSelect.tscn")
+	start_game()
 
 func _unhandled_input(event):
 	# The GlobalControls node, in the Stage scene, is set to process even
@@ -26,5 +31,4 @@ func _unhandled_input(event):
 
 
 func _on_PauseScreen_skip_intro():
-	Global.game_state["levels_unlocked"] = 1
-	var _ret = get_tree().change_scene("res://src/menus/LevelSelect.tscn")
+	start_game()

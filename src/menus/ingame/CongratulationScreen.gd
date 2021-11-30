@@ -28,6 +28,18 @@ func open():
 		level_select_button.grab_focus()
 	else:
 		main_menu_button.grab_focus()
+	
+	var alerts_label = center_cont.get_node("VBoxContainer/AlertsLabel")
+	var num_alerts = 0
+	
+	for alert in Global.game_state["alert_counts"]:
+		num_alerts += alert
+	
+	alerts_label.text += str(num_alerts)
+	if num_alerts == 0:
+		alerts_label.text += " (wow!)"
+	if num_alerts < 0:
+		alerts_label.text += " (cheater!)"
 
 	tween.interpolate_property(self, "modulate:a", 0.0, 1.0,
 			fade_in_duration, Tween.TRANS_LINEAR, Tween.EASE_IN)
