@@ -12,8 +12,10 @@ var _velocity = Vector2.ZERO
 var in_door = false
 var in_sign = false
 var in_switch = false
+var in_charge = false
 var current_sign = null
 var current_switch = null
+var current_charge = null
 
 signal game_over
 signal win
@@ -63,8 +65,6 @@ func _physics_process(delta):
 		return
 		
 	var is_crouching = Input.is_action_pressed("down") and is_on_floor() and not in_door and not in_sign and not in_switch
-	
-	print(is_crouching)
 
 	var speed = run_speed
 	if is_crouching:
@@ -134,6 +134,10 @@ func _physics_process(delta):
 		$AnimationPlayer.play("crawl")
 		_state = STATE.CRAWLING
 	
+	update()
+
+func _process(delta):
+	
 	# Zapping
 	if $Upgrades.has_zapper:
 
@@ -149,17 +153,18 @@ func _physics_process(delta):
 				if zap.get_index() == max_zaps - num_zaps:
 					zap.frame = 1
 			num_zaps -= 1
-			
-			#if num_zaps == 0:
-			#	$UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/Label2.visible = false
-
 		
 		if zapping:
 			zap_timer += delta
 			$Zapper/ZapperSprite.visible = true
 			$Zapper/CollisionShape2D.disabled = false
-	
-	update()
+		
+		if num_zaps < max_zaps and in_charge:
+			num_zaps += 1
+			current_charge.collected()
+			for zap in $UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/zaps.get_children():
+				if zap.get_index() == max_zaps - num_zaps:
+					zap.frame = 0
 
 func _ready():
 	for i in max_alerts:
@@ -235,3 +240,11 @@ func _retreated_from_switch():
 	in_switch = false
 	current_switch = null
 	$AnimatedSprite/EnterDoorSprite.visible = false
+
+func _approached_charge(curr_charge):
+	in_charge = true
+	current_charge = curr_charge
+
+func _retreated_from_charge():
+	in_charge = false
+	current_switch = null

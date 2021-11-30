@@ -38,42 +38,34 @@ sign_text = "They've started blocking off parts of the mall.\\nYou'll have to us
 
 [node name="Switch" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
 position = Vector2( 752, 256 )
-collision_layer = 4
 switch_id = 1
 
 [node name="Switch2" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
 position = Vector2( 304, 256 )
-collision_layer = 4
 switch_id = 2
 
 [node name="Switch3" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
 position = Vector2( 112, 256 )
-collision_layer = 4
 switch_id = 3
 
 [node name="Switch3-2" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
 position = Vector2( -128, 288 )
-collision_layer = 4
 switch_id = 3
 
 [node name="Switch3-3" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
 position = Vector2( -128, 416 )
-collision_layer = 4
 switch_id = 3
 
 [node name="Switch4" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
 position = Vector2( 336, 544 )
-collision_layer = 4
 switch_id = 4
 
 [node name="Switch4-2" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
 position = Vector2( 560, 544 )
-collision_layer = 4
 switch_id = 4
 
 [node name="Switch5" parent="Background" groups=["switch"] instance=ExtResource( 6 )]
 position = Vector2( 624, 400 )
-collision_layer = 4
 switch_id = 5
 
 [node name="Gate" parent="Background" groups=["gate"] instance=ExtResource( 2 )]

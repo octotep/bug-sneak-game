@@ -17,6 +17,10 @@ var levels = [
 		"text": "Blocked Off",
 		"path": "res://src/levels/ThirdLevel.tscn"
 	},
+	{
+		"text": "Bugged Out",
+		"path": "res://src/levels/FourthLevel.tscn"
+	},
 ]
 
 var current_level = -1
