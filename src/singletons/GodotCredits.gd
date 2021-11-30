@@ -35,7 +35,7 @@ var credits = [
 		"Other sprites by Dan Muckerman and Chris Yealy"
 	],[
 		"Music",
-		"Ryan Hammett"
+		"Ryan \"Larke\" Hammett"
 	],[
 		"Sound Effects",
 		"Footsteps from kenney.nl",
