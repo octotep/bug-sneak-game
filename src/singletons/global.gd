@@ -46,6 +46,6 @@ func beat_level():
 	save_game()
 	
 func did_win_game():
-	if (game_state["levels_unlocked"]) > len(levels):
+	if (current_level + 1) == len(levels):
 		return true
 	return false
