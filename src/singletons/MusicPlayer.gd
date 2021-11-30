@@ -5,8 +5,8 @@ onready var back_player = $Background
 onready var sfx_player = $SFX
 
 var _title_bgm = preload("res://assets/sounds/music/GHGO2021 TITLE redux.ogg")
-var _level_bgm = preload("res://assets/sounds/music/GHGO2021 BGM redux.ogg")
-var _alert_bgm = preload("res://assets/sounds/music/GHGO2021 BGM DRUMS ALERT.ogg")
+var _level_bgm = preload("res://assets/sounds/music/GHGO2021 BGM MAIN redux.ogg")
+var _alert_bgm = preload("res://assets/sounds/music/GHGO2021 BGM ALERT redux v3.ogg")
 
 var _alert_sfx = preload("res://assets/sounds/alert.ogg")
 

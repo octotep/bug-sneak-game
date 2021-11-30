@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GHGO2021 BGM MAIN redux.ogg-f9a8c98007854f7cf3b55b507da4d73b.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/music/GHGO2021 BGM MAIN redux.ogg"
+dest_files=[ "res://.import/GHGO2021 BGM MAIN redux.ogg-f9a8c98007854f7cf3b55b507da4d73b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
