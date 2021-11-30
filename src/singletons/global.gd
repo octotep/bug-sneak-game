@@ -4,6 +4,21 @@ var game_state = {
 	"levels_unlocked": 0
 }
 
+var levels = [
+	{
+		"text": "Learning the Basics",
+		"path": "res://src/levels/FirstLevel.tscn"
+	},
+	{
+		"text": "Moving Along",
+		"path": "res://src/levels/SecondLevel.tscn"
+	},
+	{
+		"text": "Blocked Off",
+		"path": "res://src/levels/ThirdLevel.tscn"
+	},
+]
+
 var current_level = -1
 
 func save_game():
@@ -29,3 +44,8 @@ func beat_level():
 	if (current_level + 1) == game_state["levels_unlocked"]:
 		game_state["levels_unlocked"] += 1
 	save_game()
+	
+func did_win_game():
+	if (game_state["levels_unlocked"]) > len(levels):
+		return true
+	return false

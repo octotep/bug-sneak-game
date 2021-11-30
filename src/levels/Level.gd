@@ -7,11 +7,13 @@ extends Node2D
 var _pause_menu_scene = preload("res://src/menus/ingame/PauseScreen.tscn")
 var _game_over_scene = preload("res://src/menus/ingame/GameOverScreen.tscn")
 var _win_scene = preload("res://src/menus/ingame/WinScreen.tscn")
+var _congrats_scene = preload("res://src/menus/ingame/CongratulationScreen.tscn")
 var _sign_overlay_scene = preload("res://src/menus/ingame/SignOverlay.tscn")
 
 var _pause_menu
 var _game_over_menu
 var _win_menu
+var _congrats_menu
 var _sign_overlay
 
 var _player
@@ -34,6 +36,8 @@ func _ready():
 	ui_canvas.add_child(_game_over_menu)
 	_win_menu = _win_scene.instance()
 	ui_canvas.add_child(_win_menu)
+	_congrats_menu = _congrats_scene.instance()
+	ui_canvas.add_child(_congrats_menu)
 	_sign_overlay = _sign_overlay_scene.instance()
 	ui_canvas.add_child(_sign_overlay)
 	
@@ -93,7 +97,11 @@ func _win():
 	Global.beat_level()
 	get_tree().paused = true
 	_player.visible = false
-	_win_menu.open()
+	
+	if Global.did_win_game():
+		_congrats_menu.open()
+	else:
+		_win_menu.open()
 	
 func _open_sign(input_text):
 	get_tree().paused = true
