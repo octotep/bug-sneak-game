@@ -38,9 +38,9 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/CenterContainer"]
 margin_left = 116.0
-margin_top = 126.0
+margin_top = 150.0
 margin_right = 844.0
-margin_bottom = 414.0
+margin_bottom = 390.0
 custom_constants/separation = 6
 alignment = 1
 
@@ -60,16 +60,17 @@ margin_bottom = 192.0
 rect_min_size = Vector2( 0, 20 )
 
 [node name="MainMenu" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
-margin_left = 290.0
+margin_left = 304.0
 margin_top = 198.0
-margin_right = 437.0
+margin_right = 424.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 120, 0 )
 size_flags_horizontal = 4
 custom_fonts/font = SubResource( 2 )
-text = "Main Menu"
+text = "Credits"
 
 [node name="Quit" type="Button" parent="ColorRect/CenterContainer/VBoxContainer"]
+visible = false
 margin_left = 290.0
 margin_top = 246.0
 margin_right = 437.0

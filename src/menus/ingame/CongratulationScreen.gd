@@ -39,7 +39,7 @@ func open():
 
 func _on_MainMenu_pressed():
 	get_tree().paused = false
-	var _ret = get_tree().change_scene("res://src/menus/TitleScreen.tscn")
+	var _ret = get_tree().change_scene("res://src/singletons/GodotCredits.tscn")
 
 
 func _on_Tween_all_completed():
@@ -50,7 +50,3 @@ func _on_Quit_pressed():
 	get_tree().paused = false
 	get_tree().get_root().notification(NOTIFICATION_WM_QUIT_REQUEST)
 	get_tree().quit()
-
-func _on_LevelSelect_pressed():
-	get_tree().paused = false
-	var _ret = get_tree().change_scene("res://src/menus/LevelSelect.tscn")
