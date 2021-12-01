@@ -150,25 +150,43 @@ func get_occluded_points(points_arc):
 	var space_state = get_world_2d().direct_space_state
 	var center = points_arc[0]
 	
-	for i in range(points_arc.size()):
+#	for i in range(points_arc.size()):
+#
+#		# Skip the first one because that's always the center
+#		if i == 0:
+#			continue
+#
+#		var point = points_arc[i]
+#		var intersect_result = space_state.intersect_ray(
+#			to_global(center),
+#			to_global(point),
+#			occlusion_exclusions,
+#			VISION_CONE_COLLISION_MASK
+#		)
+#
+#		# This means there was no intersection, and we can use the original point
+#		if intersect_result.empty():
+#			continue
+#
+#		points_arc.set(i, to_local(intersect_result.position))
+	
+	var occluder_poly = ConvexPolygonShape2D.new()
+	occluder_poly.set_points(points_arc)
+	var query = Physics2DShapeQueryParameters.new()
+	query.set_shape(occluder_poly)
+	query.transform = get_parent().get_global_transform()
+	query.collision_layer = VISION_CONE_COLLISION_MASK
+	var collided_shapes = space_state.intersect_shape(query)
+	
+	for shape in collided_shapes:
+		var rid = Physics2DServer.body_get_shape(shape.rid, shape.shape)
+		var phys_shape = Physics2DServer.shape_get_data(rid)
+		var phys_type = Physics2DServer.shape_get_type(rid)
+		var trans = Physics2DServer.body_get_shape_transform(shape.rid, shape.shape)
+		print(phys_type)
+		print(trans)
+		print(trans.xform(phys_shape))
 		
-		# Skip the first one because that's always the center
-		if i == 0:
-			continue
-		
-		var point = points_arc[i]
-		var intersect_result = space_state.intersect_ray(
-			to_global(center),
-			to_global(point),
-			occlusion_exclusions,
-			VISION_CONE_COLLISION_MASK
-		)
-		
-		# This means there was no intersection, and we can use the original point
-		if intersect_result.empty():
-			continue
-		
-		points_arc.set(i, to_local(intersect_result.position))
 	
 	return points_arc
 

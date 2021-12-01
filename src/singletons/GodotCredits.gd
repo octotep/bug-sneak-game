@@ -6,7 +6,6 @@ const base_speed := 50
 const speed_up_multiplier := 10.0
 const title_color := Color.blueviolet
 
-var scroll_speed := base_speed
 var speed_up := false
 
 onready var line := $CreditsContainer/Line
@@ -89,7 +88,7 @@ func finish():
 		finished = true
 		# NOTE: This is called when the credits finish
 		# - Hook up your code to return to the relevant scene here, eg...
-		get_tree().change_scene("res://src/menus/TitleScreen.tscn")
+		var _ret = get_tree().change_scene("res://src/menus/TitleScreen.tscn")
 
 
 func add_line():

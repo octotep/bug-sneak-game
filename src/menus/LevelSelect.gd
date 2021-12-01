@@ -16,7 +16,6 @@ func _ready():
 		else:
 			item_list.add_item(level["text"], play_level, true)			
 	
-	item_list.select(min_level - 1)
 	var v_scroll = item_list.get_v_scroll()
 	v_scroll.set_value(v_scroll.get_max())
 	
