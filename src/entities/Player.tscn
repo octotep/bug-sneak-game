@@ -773,6 +773,7 @@ action = "down"
 visibility_mode = 1
 
 [node name="Zap" type="TouchScreenButton" parent="UI/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
+visible = false
 position = Vector2( -5, 200 )
 rotation = -3.14159
 normal = ExtResource( 21 )

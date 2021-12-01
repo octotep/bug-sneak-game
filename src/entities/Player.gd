@@ -182,6 +182,7 @@ func _ready():
 		num_zaps = max_zaps
 		if num_zaps > 0:
 			$UI/MarginContainer/VBoxContainer/HBoxContainer/Control2/Label2.visible = true
+			$UI/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Zap.visible = true
 		
 	for i in num_zaps:
 		var new_zap = Sprite.new()
