@@ -41,9 +41,13 @@ position = Vector2( 656.424, 368 )
 rotation = 3.14159
 min_angle = 180
 max_angle = 270
-scan_speed = 0.3
+scan_speed = 18.75
+
+[node name="AnimatedSprite" parent="foreground/Camera2" index="1"]
+flip_v = false
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80, 456 )
 
+[editable path="foreground/Camera2"]
 [editable path="Player"]
