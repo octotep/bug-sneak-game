@@ -30,6 +30,8 @@ var occlusion_exclusions = []
 
 signal alerted
 
+var _polygon
+
 func _ready():
 	
 	if leniency == 0:
@@ -57,19 +59,22 @@ func _ready():
 		parent_node = parent_node.get_parent()
 	if not parent_node == null:
 		occlusion_exclusions = [parent_node]
+		
+	# TODO: Don't recalculate all points every frame
+	# Set the collision polygon based on export vars
+	_polygon = get_shape_points(
+		position,
+		detect_radius,
+		rotation_degrees - field_of_view / 2,
+		rotation_degrees + field_of_view / 2
+	)
 
 export(bool) var skip_occlusion_update = false
 var last_occlusion = null
 
 func _physics_process(_delta):
 	
-	# Set the collision polygon based on export vars
-	var polygon = get_shape_points(
-		position,
-		detect_radius,
-		rotation_degrees - field_of_view / 2,
-		rotation_degrees + field_of_view / 2
-	)
+	var polygon = _polygon
 	
 	if ($VisibilityNotifier2D.is_on_screen() and not skip_occlusion_update) or last_occlusion == null:
 		polygon = get_occluded_points(polygon)

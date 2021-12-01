@@ -145,18 +145,13 @@ max_angle = 250
 scan_speed = 18.0
 
 [node name="AnimatedSprite" parent="Camera" index="1"]
+frame = 0
 flip_v = false
 
 [node name="Camera3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1113, 790 )
+position = Vector2( 1119, 794 )
 min_angle = 135
 max_angle = 135
-
-[node name="VisionCone" parent="Camera3" index="0"]
-skip_occlusion_update = true
-
-[node name="AnimatedSprite" parent="Camera3" index="1"]
-frame = 0
 
 [node name="Camera2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1107, 910 )
@@ -182,9 +177,6 @@ max_angle = 180
 [node name="VisionCone" parent="Camera8" index="0"]
 skip_occlusion_update = true
 
-[node name="AnimatedSprite" parent="Camera8" index="1"]
-frame = 0
-
 [node name="Camera10" parent="." instance=ExtResource( 4 )]
 position = Vector2( 784, 262 )
 min_angle = 110
@@ -198,9 +190,6 @@ max_angle = 180
 
 [node name="VisionCone" parent="Camera9" index="0"]
 skip_occlusion_update = true
-
-[node name="AnimatedSprite" parent="Camera9" index="1"]
-frame = 0
 
 [node name="Gate" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1120, 615 )
