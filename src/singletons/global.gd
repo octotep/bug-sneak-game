@@ -24,6 +24,10 @@ var levels = [
 		"text": "Bugged Out",
 		"path": "res://src/levels/FourthLevel.tscn"
 	},
+	{
+		"text": "End in Sight",
+		"path": "res://src/levels/FifthLevel.tscn"
+	},
 ]
 
 var current_level = -1
