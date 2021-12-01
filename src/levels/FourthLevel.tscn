@@ -62,6 +62,9 @@ max_angle = 190
 [node name="VisionCone" parent="Camera2" index="0"]
 detect_radius = 160
 
+[node name="AnimatedSprite" parent="Camera2" index="1"]
+frame = 0
+
 [node name="SignTextSwitcher" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
