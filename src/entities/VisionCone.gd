@@ -74,7 +74,7 @@ func _physics_process(_delta):
 	if ($VisibilityNotifier2D.is_on_screen() and not skip_occlusion_update) or last_occlusion == null:
 		polygon = get_occluded_points(polygon)
 		last_occlusion = polygon
-	elif $VisibilityNotifier2D.is_on_screen() and skip_occlusion_update and last_occlusion != null:
+	elif skip_occlusion_update and last_occlusion != null:
 		polygon = last_occlusion
 	$VisionConePolygon.polygon = polygon
 
