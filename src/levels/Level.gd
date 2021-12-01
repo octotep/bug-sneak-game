@@ -35,6 +35,7 @@ func _ready():
 	_game_over_menu = _game_over_scene.instance()
 	ui_canvas.add_child(_game_over_menu)
 	_win_menu = _win_scene.instance()
+	_win_menu.visible = false
 	ui_canvas.add_child(_win_menu)
 	_congrats_menu = _congrats_scene.instance()
 	ui_canvas.add_child(_congrats_menu)

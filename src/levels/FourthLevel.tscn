@@ -58,6 +58,9 @@ min_angle = 190
 max_angle = 195
 scan_speed = 0.0
 
+[node name="AnimatedSprite" parent="Camera" index="1"]
+frame = 0
+
 [node name="Camera2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 240, 708 )
 rotation = 3.14159
@@ -66,9 +69,6 @@ max_angle = 190
 
 [node name="VisionCone" parent="Camera2" index="0"]
 detect_radius = 160
-
-[node name="AnimatedSprite" parent="Camera2" index="1"]
-frame = 0
 
 [node name="SignTextSwitcher" type="Node2D" parent="."]
 script = ExtResource( 5 )
