@@ -58,6 +58,9 @@ func _ready():
 	if not parent_node == null:
 		occlusion_exclusions = [parent_node]
 
+export(bool) var skip_occlusion_update = false
+var last_occlusion = null
+
 func _physics_process(_delta):
 	
 	# Set the collision polygon based on export vars
@@ -68,8 +71,11 @@ func _physics_process(_delta):
 		rotation_degrees + field_of_view / 2
 	)
 	
-	if $VisibilityNotifier2D.is_on_screen():
+	if ($VisibilityNotifier2D.is_on_screen() and not skip_occlusion_update) or last_occlusion == null:
 		polygon = get_occluded_points(polygon)
+		last_occlusion = polygon
+	elif $VisibilityNotifier2D.is_on_screen() and skip_occlusion_update and last_occlusion != null:
+		polygon = last_occlusion
 	$VisionConePolygon.polygon = polygon
 
 func _process(delta):
