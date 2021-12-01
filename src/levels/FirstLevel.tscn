@@ -44,6 +44,7 @@ max_angle = 270
 scan_speed = 18.75
 
 [node name="AnimatedSprite" parent="foreground/Camera2" index="1"]
+frame = 0
 flip_v = false
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
