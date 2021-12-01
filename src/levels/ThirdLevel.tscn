@@ -125,7 +125,7 @@ position = Vector2( 192, 184 )
 rotation = 2.35619
 min_angle = 75
 max_angle = 135
-scan_speed = 0.4
+scan_speed = 25.0
 
 [node name="Camera2" parent="Background" instance=ExtResource( 28 )]
 position = Vector2( 160, 184 )
@@ -133,7 +133,7 @@ rotation = 3.92699
 scale = Vector2( -1, 1 )
 min_angle = 225
 max_angle = 285
-scan_speed = 0.4
+scan_speed = 25.0
 
 [node name="Camera3" parent="Background" instance=ExtResource( 28 )]
 position = Vector2( 16, 336 )
@@ -153,7 +153,11 @@ rotation = 2.35619
 scale = Vector2( -1, 1 )
 min_angle = 120
 max_angle = 150
-scan_speed = 0.75
+scan_speed = 0.0
+
+[node name="AnimatedSprite" parent="Background/Camera4" index="1"]
+frame = 0
+flip_v = false
 
 [node name="Camera5" parent="Background" instance=ExtResource( 28 )]
 position = Vector2( 720, 488 )
@@ -161,7 +165,7 @@ rotation = 3.92699
 scale = Vector2( -1, 1 )
 min_angle = 210
 max_angle = 240
-scan_speed = 0.75
+scan_speed = 0.0
 
 [node name="Camera6" parent="Background" instance=ExtResource( 28 )]
 position = Vector2( 720, 544 )
@@ -169,7 +173,7 @@ rotation = 4.71239
 scale = Vector2( -1, 1 )
 min_angle = 265
 max_angle = 275
-scan_speed = 0.75
+scan_speed = 0.0
 
 [node name="Camera7" parent="Background" instance=ExtResource( 28 )]
 position = Vector2( 624, 544 )
@@ -177,7 +181,11 @@ rotation = 1.5708
 scale = Vector2( -1, 1 )
 min_angle = 80
 max_angle = 100
-scan_speed = 0.75
+scan_speed = 0.0
+
+[node name="AnimatedSprite" parent="Background/Camera7" index="1"]
+frame = 0
+flip_v = false
 
 [node name="Path2D" type="Path2D" parent="Background"]
 position = Vector2( 240, 560 )
@@ -197,5 +205,7 @@ wait_time = 0.8
 [node name="Player" parent="Background" instance=ExtResource( 27 )]
 position = Vector2( 624, 232 )
 
+[editable path="Background/Camera4"]
+[editable path="Background/Camera7"]
 [editable path="Background/Path2D/PathFollow2D/Sentry"]
 [editable path="Background/Player"]

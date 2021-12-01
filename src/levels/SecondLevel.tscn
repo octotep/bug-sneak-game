@@ -36,7 +36,7 @@ position = Vector2( 656.424, 150 )
 rotation = 1.39626
 min_angle = 80
 max_angle = 260
-scan_speed = 0.4
+scan_speed = 25.0
 
 [node name="Path2D" parent="foreground" instance=ExtResource( 7 )]
 position = Vector2( 433, 496 )

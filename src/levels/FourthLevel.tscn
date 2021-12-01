@@ -51,7 +51,7 @@ position = Vector2( 572, 144 )
 rotation = -3.05433
 min_angle = 190
 max_angle = 195
-scan_speed = 0.05
+scan_speed = 0.0
 
 [node name="Camera2" parent="." instance=ExtResource( 6 )]
 position = Vector2( 240, 708 )
