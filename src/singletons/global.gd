@@ -28,6 +28,10 @@ var levels = [
 		"text": "End in Sight",
 		"path": "res://src/levels/FifthLevel.tscn"
 	},
+	{
+		"text": "The Final Climb",
+		"path": "res://src/levels/TheEnd.tscn"
+	},
 ]
 
 var current_level = -1
