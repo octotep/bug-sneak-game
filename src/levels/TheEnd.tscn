@@ -145,13 +145,18 @@ max_angle = 250
 scan_speed = 18.0
 
 [node name="AnimatedSprite" parent="Camera" index="1"]
-frame = 0
 flip_v = false
 
 [node name="Camera3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1113, 790 )
 min_angle = 135
 max_angle = 135
+
+[node name="VisionCone" parent="Camera3" index="0"]
+skip_occlusion_update = true
+
+[node name="AnimatedSprite" parent="Camera3" index="1"]
+frame = 0
 
 [node name="Camera2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1107, 910 )
@@ -174,6 +179,12 @@ position = Vector2( 600, 271 )
 min_angle = 180
 max_angle = 180
 
+[node name="VisionCone" parent="Camera8" index="0"]
+skip_occlusion_update = true
+
+[node name="AnimatedSprite" parent="Camera8" index="1"]
+frame = 0
+
 [node name="Camera10" parent="." instance=ExtResource( 4 )]
 position = Vector2( 784, 262 )
 min_angle = 110
@@ -184,6 +195,12 @@ scan_speed = 25.0
 position = Vector2( 972, 271 )
 min_angle = 180
 max_angle = 180
+
+[node name="VisionCone" parent="Camera9" index="0"]
+skip_occlusion_update = true
+
+[node name="AnimatedSprite" parent="Camera9" index="1"]
+frame = 0
 
 [node name="Gate" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1120, 615 )
@@ -284,6 +301,10 @@ drive_speed = 60
 anims/idle = SubResource( 5 )
 anims/move = SubResource( 6 )
 
+[node name="VisionCone" parent="Path2D4/PathFollow2D/Sentry/Node2D" index="0"]
+leniency = 0.3
+skip_occlusion_update = true
+
 [node name="Sprite" parent="Path2D4/PathFollow2D/Sentry" index="3"]
 frame = 4
 
@@ -304,6 +325,9 @@ position = Vector2( 83, 1004 )
 has_zapper = true
 
 [editable path="Camera"]
+[editable path="Camera3"]
+[editable path="Camera8"]
+[editable path="Camera9"]
 [editable path="Path2D2"]
 [editable path="Path2D2/PathFollow2D/Sentry"]
 [editable path="Path2D3"]

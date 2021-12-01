@@ -124,6 +124,9 @@ position = Vector2( 606, -239 )
 [node name="Sentry" parent="Path2D2/PathFollow2D" index="0"]
 position = Vector2( -12.6887, -0.88678 )
 
+[node name="VisionCone" parent="Path2D2/PathFollow2D/Sentry/Node2D" index="0"]
+skip_occlusion_update = true
+
 [node name="Sign" parent="." instance=ExtResource( 4 )]
 position = Vector2( 208, 241 )
 sign_text = "You're almost to the entrance, but security is on maximum alert.\\nYou're gonna need to find all the security stations and lower the gates to finally escape this hell of a mall."
@@ -151,20 +154,22 @@ position = Vector2( 124, 876 )
 position = Vector2( 0, 5 )
 drive_speed = 40
 
+[node name="VisionCone" parent="Path2D/PathFollow2D/Sentry/Node2D" index="0"]
+skip_occlusion_update = true
+
 [node name="PatrolWait" parent="Path2D/PathFollow2D/Sentry" index="4"]
 wait_time = 1.5
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 120, 232 )
 
-[node name="MarginContainer" parent="Player/UI" index="0"]
-visible = false
-
 [node name="Upgrades" parent="Player" index="7"]
 has_zapper = true
 
+[editable path="Camera"]
 [editable path="Camera2"]
 [editable path="Path2D2"]
+[editable path="Path2D2/PathFollow2D/Sentry"]
 [editable path="Path2D"]
 [editable path="Path2D/PathFollow2D/Sentry"]
 [editable path="Player"]
